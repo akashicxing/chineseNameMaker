@@ -10,7 +10,8 @@ import {
   Users, 
   Download,
   PenTool,
-  History
+  History,
+  AlertTriangle
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -54,42 +55,42 @@ export default function Features() {
     {
       icon: <ScrollText className="h-6 w-6" />,
       title: "Cultural Meaning",
-      description: "Each name comes with detailed cultural context and historical significance explanations."
+      description: "Each name comes with detailed cultural interpretations, revealing the deep meaning behind your Chinese name."
     },
     {
       icon: <BookOpen className="h-6 w-6" />,
-      title: "Pinyin Guidance",
+      title: "Pinyin Guide",
       description: "Clear pronunciation guides with both pinyin notation and phonetic equivalents in English."
     },
     {
       icon: <Headphones className="h-6 w-6" />,
-      title: "Audio Pronunciation",
-      description: "Listen to authentic native pronunciations of your name to perfect your own."
+      title: "Smart Pronunciation",
+      description: "Experience authentic pronunciation through advanced text-to-speech technology."
     },
     {
       icon: <Pen className="h-6 w-6" />,
-      title: "Stroke Animation",
-      description: "Interactive animations showing the correct stroke order for writing your Chinese characters."
+      title: "Stroke Order",
+      description: "Learn the correct stroke order of Chinese characters through dynamic demonstrations."
     },
     {
       icon: <Users className="h-6 w-6" />,
-      title: "Expert Consultation",
-      description: "Get personalized advice from our team of linguistic and cultural experts."
+      title: "Expert Guidance",
+      description: "Receive professional advice to ensure cultural authenticity in your Chinese name."
     },
     {
-      icon: <Download className="h-6 w-6" />,
-      title: "Digital Certificate",
-      description: "Receive a beautifully designed digital certificate of your official Chinese name."
+      icon: <BookOpen className="h-6 w-6" />,
+      title: "Chinese Surnames",
+      description: "Explore the rich history and origins of traditional Chinese family names."
     },
     {
-      icon: <PenTool className="h-6 w-6" />,
-      title: "Calligraphy Options",
-      description: "Choose from various calligraphy styles to represent your name in artistic Chinese tradition."
+      icon: <AlertTriangle className="h-6 w-6" />,
+      title: "Naming Taboos",
+      description: "Smart alerts about cultural taboos to ensure your name is culturally appropriate."
     },
     {
       icon: <History className="h-6 w-6" />,
-      title: "Meaning Analysis",
-      description: "Understand how your Chinese name reflects your personality and aspirations."
+      title: "Cultural Heritage",
+      description: "Names inspired by classical poetry, historical figures, and cultural elements."
     }
   ];
 
@@ -101,7 +102,7 @@ export default function Features() {
             Culturally Rich <span className="text-red-600 dark:text-red-400">Features</span>
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300">
-            Our service provides comprehensive tools and insights to connect you with your perfect Chinese name.
+            Discover our comprehensive tools and insights for finding your perfect Chinese name.
           </p>
         </div>
 

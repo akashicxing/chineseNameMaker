@@ -53,25 +53,31 @@ export default function Hero() {
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-3xl mx-auto text-center">
           <div className={cn(
-            "inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 mb-6",
+            "inline-flex items-center gap-2 px-6 py-3 rounded-full bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 mb-8",
             isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           )}>
-            <Sparkles className="h-4 w-4" />
-            <span className="text-sm font-medium">AI-Powered Name Generation</span>
+            <Sparkles className="h-5 w-5" />
+            <span className="text-base font-semibold tracking-wide">Free Name Generator</span>
           </div>
 
           <h1 className={cn(
-            "text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6 transition-all duration-1000",
+            "flex flex-col items-center gap-4 text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-8 transition-all duration-1000",
             isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           )}>
-            Your Meaningful <span className="text-red-600 dark:text-red-400">Chinese Name</span>, Crafted with Tradition
+            <div className="flex flex-wrap justify-center items-baseline gap-x-4">
+              <span>Your Meaningful</span>
+              <span className="text-red-600 dark:text-red-400">Chinese Name</span>
+            </div>
+            <div className="text-3xl md:text-4xl lg:text-5xl text-gray-700 dark:text-gray-300 font-medium">
+              Crafted with Tradition
+            </div>
           </h1>
           
           <p className={cn(
             "text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto transition-all duration-1000 delay-200",
             isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           )}>
-            Discover a personalized Chinese name that reflects your identity through the lens of 5,000 years of culture and tradition.
+            Get your free personalized Chinese name that reflects your identity through the lens of 5,000 years of culture and tradition.
           </p>
 
           <div className={cn(
@@ -139,8 +145,12 @@ export default function Hero() {
                 size="lg"
               >
                 <Sparkles className="mr-2 h-5 w-5" />
-                Generate My Chinese Name
+                Get My Free Chinese Name
               </Button>
+
+              <p className="text-sm text-gray-500 dark:text-gray-400 mt-4 text-center">
+                No credit card required • Instant name generation • Premium features available
+              </p>
             </form>
 
             {generatedName && (
@@ -174,7 +184,7 @@ export default function Hero() {
             "mt-16 transition-all duration-1000 delay-600",
             isLoaded ? "opacity-100" : "opacity-0"
           )}>
-            <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">Trusted by individuals from</p>
+            <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">Join thousands of happy users from</p>
             <div className="flex flex-wrap justify-center gap-8">
               <div className="text-gray-400 dark:text-gray-600 font-medium">UNITED STATES</div>
               <div className="text-gray-400 dark:text-gray-600 font-medium">FRANCE</div>

@@ -69,19 +69,19 @@ export default function HowItWorks() {
     {
       number: 2,
       title: "Receive Personalized Recommendations",
-      description: "Our experts will select characters that match your profile and create harmonious combinations that sound natural to Chinese speakers.",
+      description: "Our AI system will analyze your profile and create a harmonious Chinese name that matches your personality.",
       icon: <ClipboardList className="h-6 w-6" />,
     },
     {
       number: 3,
       title: "Explore Cultural Context",
-      description: "Learn about the meaning, history, and cultural significance behind each character in your recommended names.",
+      description: "Learn about the meaning, history, and cultural significance behind each character in your Chinese name.",
       icon: <FileText className="h-6 w-6" />,
     },
     {
       number: 4,
-      title: "Finalize Your Chinese Identity",
-      description: "Select your favorite name and receive your digital certificate along with pronunciation guides and calligraphy options.",
+      title: "Learn Your Chinese Name",
+      description: "Master the pronunciation and writing of your Chinese name, with options to explore premium features for more choices.",
       icon: <CheckCircle className="h-6 w-6" />,
     }
   ];

@@ -22,6 +22,10 @@ export const translations = {
       faq: 'FAQ',
       blog: 'Blog',
     },
+    auth: {
+      signIn: 'Sign In',
+      getStarted: 'Get Started',
+    },
     hero: {
       title: 'Your Meaningful Chinese Name, Crafted with Tradition',
       subtitle: 'Discover a personalized Chinese name that reflects your identity through the lens of 5,000 years of culture and tradition.',
@@ -36,6 +40,10 @@ export const translations = {
       pricing: '价格',
       faq: '常见问题',
       blog: '博客',
+    },
+    auth: {
+      signIn: '登录',
+      getStarted: '开始使用',
     },
     hero: {
       title: '传统文化赋予您独特的中文名字',
@@ -52,6 +60,10 @@ export const translations = {
       faq: 'FAQ',
       blog: 'Blog',
     },
+    auth: {
+      signIn: 'Se connecter',
+      getStarted: 'Commencer',
+    },
     hero: {
       title: 'Votre nom chinois significatif, créé avec tradition',
       subtitle: 'Découvrez un nom chinois personnalisé qui reflète votre identité à travers 5000 ans de culture et de tradition.',
@@ -66,6 +78,10 @@ export const translations = {
       pricing: '料金',
       faq: 'よくある質問',
       blog: 'ブログ',
+    },
+    auth: {
+      signIn: 'ログイン',
+      getStarted: '始める',
     },
     hero: {
       title: '伝統に基づいた意味のある中国語の名前',
@@ -82,6 +98,10 @@ export const translations = {
       faq: 'Вопросы',
       blog: 'Блог',
     },
+    auth: {
+      signIn: 'Войти',
+      getStarted: 'Начать',
+    },
     hero: {
       title: 'Ваше значимое китайское имя, созданное с традицией',
       subtitle: 'Откройте для себя персонализированное китайское имя, отражающее вашу индивидуальность через призму 5000-летней культуры и традиций.',
@@ -97,6 +117,10 @@ export const translations = {
       faq: 'FAQ',
       blog: 'Blog',
     },
+    auth: {
+      signIn: 'Anmelden',
+      getStarted: 'Loslegen',
+    },
     hero: {
       title: 'Ihr bedeutungsvoller chinesischer Name, geschaffen mit Tradition',
       subtitle: 'Entdecken Sie einen personalisierten chinesischen Namen, der Ihre Identität durch 5000 Jahre Kultur und Tradition widerspiegelt.',
@@ -111,6 +135,10 @@ export const translations = {
       pricing: 'Precios',
       faq: 'Preguntas frecuentes',
       blog: 'Blog',
+    },
+    auth: {
+      signIn: 'Iniciar sesión',
+      getStarted: 'Empezar',
     },
     hero: {
       title: 'Tu nombre chino significativo, creado con tradición',

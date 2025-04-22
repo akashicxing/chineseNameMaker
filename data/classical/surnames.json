@@ -1,0 +1,137 @@
+[
+  {
+    "surname": "李",
+    "pinyin": "lǐ",
+    "rank": 1,
+    "origin": "嬴姓，邑名李",
+    "population": "约1亿",
+    "regions": ["陕西", "河南", "山西"],
+    "famous_people": ["李白", "李清照", "李商隐"]
+  },
+  {
+    "surname": "王",
+    "pinyin": "wáng",
+    "rank": 2,
+    "origin": "姬姓，王者之后",
+    "population": "约9000万",
+    "regions": ["山东", "河北", "河南"],
+    "famous_people": ["王维", "王安石", "王羲之"]
+  },
+  {
+    "surname": "张",
+    "pinyin": "zhāng",
+    "rank": 3,
+    "origin": "姬姓，弓张之义",
+    "population": "约8500万",
+    "regions": ["河南", "山东", "河北"],
+    "famous_people": ["张衡", "张择端", "张即之"]
+  },
+  {
+    "surname": "刘",
+    "pinyin": "liú",
+    "rank": 4,
+    "origin": "姬姓，以火为业",
+    "population": "约7000万",
+    "regions": ["山东", "河南", "江苏"],
+    "famous_people": ["刘邦", "刘禹锡", "刘备"]
+  },
+  {
+    "surname": "陈",
+    "pinyin": "chén",
+    "rank": 5,
+    "origin": "妫姓，陈国后裔",
+    "population": "约5400万",
+    "regions": ["广东", "福建", "浙江"],
+    "famous_people": ["陈寿", "陈子昂", "陈抟"]
+  },
+  {
+    "surname": "杨",
+    "pinyin": "yáng",
+    "rank": 6,
+    "origin": "姬姓，杨国后裔",
+    "population": "约5000万",
+    "regions": ["陕西", "四川", "云南"],
+    "famous_people": ["杨贵妃", "杨万里", "杨慎"]
+  },
+  {
+    "surname": "黄",
+    "pinyin": "huáng",
+    "rank": 7,
+    "origin": "姚姓，黄帝后裔",
+    "population": "约4900万",
+    "regions": ["广东", "福建", "江西"],
+    "famous_people": ["黄庭坚", "黄宗羲", "黄道婆"]
+  },
+  {
+    "surname": "赵",
+    "pinyin": "zhào",
+    "rank": 8,
+    "origin": "嬴姓，赵国后裔",
+    "population": "约4800万",
+    "regions": ["河北", "山西", "辽宁"],
+    "famous_people": ["赵匡胤", "赵孟頫", "赵云"]
+  },
+  {
+    "surname": "吴",
+    "pinyin": "wú",
+    "rank": 9,
+    "origin": "姬姓，吴国后裔",
+    "population": "约4700万",
+    "regions": ["江苏", "浙江", "上海"],
+    "famous_people": ["吴道子", "吴敬梓", "吴承恩"]
+  },
+  {
+    "surname": "周",
+    "pinyin": "zhōu",
+    "rank": 10,
+    "origin": "姬姓，周王室后裔",
+    "population": "约4500万",
+    "regions": ["江苏", "浙江", "湖南"],
+    "famous_people": ["周敦颐", "周邦彦", "周文王"]
+  },
+  {
+    "surname": "徐",
+    "pinyin": "xú",
+    "rank": 11,
+    "origin": "妫姓，徐国后裔",
+    "population": "约2000万",
+    "regions": ["江苏", "安徽", "山东"],
+    "famous_people": ["徐霞客", "徐渭", "徐光启"]
+  },
+  {
+    "surname": "孙",
+    "pinyin": "sūn",
+    "rank": 12,
+    "origin": "子姓，孙姓始祖",
+    "population": "约2000万",
+    "regions": ["山东", "江苏", "河南"],
+    "famous_people": ["孙权", "孙中山", "孙武"]
+  },
+  {
+    "surname": "马",
+    "pinyin": "mǎ",
+    "rank": 13,
+    "origin": "嬴姓，马圉后裔",
+    "population": "约1700万",
+    "regions": ["甘肃", "青海", "宁夏"],
+    "famous_people": ["马致远", "马援", "马可波罗"]
+  },
+  {
+    "surname": "朱",
+    "pinyin": "zhū",
+    "rank": 14,
+    "origin": "姬姓，朱国后裔",
+    "population": "约1600万",
+    "regions": ["浙江", "江苏", "安徽"],
+    "famous_people": ["朱元璋", "朱熹", "朱自清"]
+  },
+  {
+    "surname": "胡",
+    "pinyin": "hú",
+    "rank": 15,
+    "origin": "姬姓，胡国后裔",
+    "population": "约1500万",
+    "regions": ["安徽", "湖北", "江西"],
+    "famous_people": ["胡适", "胡雪岩", "胡金铨"]
+  }
+] 

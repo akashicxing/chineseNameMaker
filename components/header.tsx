@@ -46,19 +46,19 @@ export default function Header() {
         </Link>
 
         <nav className="hidden md:flex space-x-8 text-sm">
-          <Link href="#features" className="text-gray-700 hover:text-red-600 dark:text-gray-300 dark:hover:text-red-400 transition-colors">
+          <Link href="/features" className="text-gray-700 hover:text-red-600 dark:text-gray-300 dark:hover:text-red-400 transition-colors">
             {t.nav.features}
           </Link>
-          <Link href="#how-it-works" className="text-gray-700 hover:text-red-600 dark:text-gray-300 dark:hover:text-red-400 transition-colors">
+          <Link href="/how-it-works" className="text-gray-700 hover:text-red-600 dark:text-gray-300 dark:hover:text-red-400 transition-colors">
             {t.nav.howItWorks}
           </Link>
-          <Link href="#testimonials" className="text-gray-700 hover:text-red-600 dark:text-gray-300 dark:hover:text-red-400 transition-colors">
+          <Link href="/name" className="text-gray-700 hover:text-red-600 dark:text-gray-300 dark:hover:text-red-400 transition-colors">
+            名字生成器
+          </Link>
+          <Link href="/testimonials" className="text-gray-700 hover:text-red-600 dark:text-gray-300 dark:hover:text-red-400 transition-colors">
             {t.nav.testimonials}
           </Link>
-          <Link href="#pricing" className="text-gray-700 hover:text-red-600 dark:text-gray-300 dark:hover:text-red-400 transition-colors">
-            {t.nav.pricing}
-          </Link>
-          <Link href="#faq" className="text-gray-700 hover:text-red-600 dark:text-gray-300 dark:hover:text-red-400 transition-colors">
+          <Link href="/faq" className="text-gray-700 hover:text-red-600 dark:text-gray-300 dark:hover:text-red-400 transition-colors">
             {t.nav.faq}
           </Link>
           <Link href="/blog" className="text-gray-700 hover:text-red-600 dark:text-gray-300 dark:hover:text-red-400 transition-colors">
@@ -70,10 +70,10 @@ export default function Header() {
           <ThemeSwitcher />
           <LanguageSwitcher />
           <Button variant="outline" className="font-medium">
-            Sign In
+            {t.auth.signIn}
           </Button>
           <Button className="bg-red-600 hover:bg-red-700 text-white font-medium">
-            Get Started
+            {t.auth.getStarted}
           </Button>
         </div>
 
@@ -90,35 +90,35 @@ export default function Header() {
         <div className="md:hidden bg-white dark:bg-gray-900 shadow-lg absolute top-full left-0 right-0 p-4">
           <nav className="flex flex-col space-y-4">
             <Link 
-              href="#features" 
+              href="/features" 
               className="text-gray-700 hover:text-red-600 dark:text-gray-300 dark:hover:text-red-400"
               onClick={() => setMobileMenuOpen(false)}
             >
               {t.nav.features}
             </Link>
             <Link 
-              href="#how-it-works" 
+              href="/how-it-works" 
               className="text-gray-700 hover:text-red-600 dark:text-gray-300 dark:hover:text-red-400"
               onClick={() => setMobileMenuOpen(false)}
             >
               {t.nav.howItWorks}
             </Link>
             <Link 
-              href="#testimonials" 
+              href="/name" 
+              className="text-gray-700 hover:text-red-600 dark:text-gray-300 dark:hover:text-red-400"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              名字生成器
+            </Link>
+            <Link 
+              href="/testimonials" 
               className="text-gray-700 hover:text-red-600 dark:text-gray-300 dark:hover:text-red-400"
               onClick={() => setMobileMenuOpen(false)}
             >
               {t.nav.testimonials}
             </Link>
             <Link 
-              href="#pricing" 
-              className="text-gray-700 hover:text-red-600 dark:text-gray-300 dark:hover:text-red-400"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              {t.nav.pricing}
-            </Link>
-            <Link 
-              href="#faq" 
+              href="/faq" 
               className="text-gray-700 hover:text-red-600 dark:text-gray-300 dark:hover:text-red-400"
               onClick={() => setMobileMenuOpen(false)}
             >
@@ -136,8 +136,8 @@ export default function Header() {
                 <ThemeSwitcher />
                 <LanguageSwitcher />
               </div>
-              <Button variant="outline" className="w-full">Sign In</Button>
-              <Button className="w-full bg-red-600 hover:bg-red-700 text-white">Get Started</Button>
+              <Button variant="outline" className="w-full">{t.auth.signIn}</Button>
+              <Button className="w-full bg-red-600 hover:bg-red-700 text-white">{t.auth.getStarted}</Button>
             </div>
           </nav>
         </div>
