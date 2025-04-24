@@ -3,20 +3,31 @@
 import * as React from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { DayPicker } from 'react-day-picker';
-
 import { cn } from '@/lib/utils';
 import { buttonVariants } from '@/components/ui/button';
+import { format } from 'date-fns';
+import { enUS } from 'date-fns/locale';
 
-export type CalendarProps = React.ComponentProps<typeof DayPicker>;
+export type CalendarProps = {
+  className?: string;
+  classNames?: Record<string, string>;
+  showOutsideDays?: boolean;
+  selected?: Date;
+  onSelect?: (date?: Date) => void;
+};
 
 function Calendar({
   className,
   classNames,
   showOutsideDays = true,
+  selected,
+  onSelect,
   ...props
 }: CalendarProps) {
   return (
     <DayPicker
+      mode="single"
+      locale={enUS}
       showOutsideDays={showOutsideDays}
       className={cn('p-3', className)}
       classNames={{
@@ -54,9 +65,30 @@ function Calendar({
         ...classNames,
       }}
       components={{
-        IconLeft: ({ ...props }) => <ChevronLeft className="h-4 w-4" />,
-        IconRight: ({ ...props }) => <ChevronRight className="h-4 w-4" />,
+        IconLeft: () => <ChevronLeft className="h-4 w-4" />,
+        IconRight: () => <ChevronRight className="h-4 w-4" />,
       }}
+      formatters={{
+        formatCaption: (date) => format(date, 'MMMM yyyy'),
+      }}
+      selected={selected}
+      onSelect={onSelect}
+      footer={
+        <div className="flex justify-between mt-4">
+          <button
+            className="text-sm text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
+            onClick={() => onSelect?.(new Date())}
+          >
+            Today
+          </button>
+          <button
+            className="text-sm text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
+            onClick={() => onSelect?.(undefined)}
+          >
+            Clear
+          </button>
+        </div>
+      }
       {...props}
     />
   );

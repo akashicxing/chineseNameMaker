@@ -9,6 +9,7 @@ import LanguageSwitcher from './language-switcher';
 import ThemeSwitcher from './theme-switcher';
 import { useLanguage, translations } from '@/lib/i18n';
 import { useTheme } from '@/lib/themes';
+import { usePathname } from "next/navigation"
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -16,6 +17,7 @@ export default function Header() {
   const { language } = useLanguage();
   const { theme } = useTheme();
   const t = translations[language];
+  const pathname = usePathname()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -52,8 +54,11 @@ export default function Header() {
           <Link href="/how-it-works" className="text-gray-700 hover:text-red-600 dark:text-gray-300 dark:hover:text-red-400 transition-colors">
             {t.nav.howItWorks}
           </Link>
-          <Link href="/name" className="text-gray-700 hover:text-red-600 dark:text-gray-300 dark:hover:text-red-400 transition-colors">
-            名字生成器
+          <Link href="/chinesenamegenerator" className={cn(
+            "text-gray-700 hover:text-red-600 dark:text-gray-300 dark:hover:text-red-400 transition-colors",
+            pathname === "/chinesenamegenerator" && "text-red-600 dark:text-red-400"
+          )}>
+            {t.nav.nameGenerator}
           </Link>
           <Link href="/testimonials" className="text-gray-700 hover:text-red-600 dark:text-gray-300 dark:hover:text-red-400 transition-colors">
             {t.nav.testimonials}
@@ -104,11 +109,14 @@ export default function Header() {
               {t.nav.howItWorks}
             </Link>
             <Link 
-              href="/name" 
-              className="text-gray-700 hover:text-red-600 dark:text-gray-300 dark:hover:text-red-400"
+              href="/chinesenamegenerator" 
+              className={cn(
+                "text-gray-700 hover:text-red-600 dark:text-gray-300 dark:hover:text-red-400",
+                pathname === "/chinesenamegenerator" && "text-red-600 dark:text-red-400"
+              )}
               onClick={() => setMobileMenuOpen(false)}
             >
-              名字生成器
+              {t.nav.nameGenerator}
             </Link>
             <Link 
               href="/testimonials" 

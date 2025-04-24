@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { nameGenerator } from '@/lib/name-generator';
 import { toPinyin } from '@/lib/pinyin';
 import { translateDynasty, translateBook, translateText, translateAuthor } from '@/lib/translate';
@@ -12,7 +12,7 @@ export async function GET() {
       ...generatedName,
       pinyin: {
         surname: generatedName.surname.pinyin,
-        givenName: toPinyin(generatedName.name)
+        givenName: await toPinyin(generatedName.name)
       },
       // Translate the content to English
       englishTranslation: {
@@ -25,11 +25,14 @@ export async function GET() {
       }
     };
 
-    return NextResponse.json(nameWithPinyin);
+    return NextResponse.json({
+      success: true,
+      data: nameWithPinyin
+    });
   } catch (error) {
     console.error('Error generating name:', error);
     return NextResponse.json(
-      { error: 'Failed to generate name' },
+      { success: false, error: '生成名字时发生错误，请稍后再试' },
       { status: 500 }
     );
   }

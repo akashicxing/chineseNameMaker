@@ -10,8 +10,8 @@ export interface Surname {
   surname: string;
   pinyin: string;
   rank: number;
-  origin: string;
   population: string;
+  percentage: string;
   regions: string[];
   famous_people: string[];
 }
