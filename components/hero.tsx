@@ -113,7 +113,7 @@ export default function Hero() {
           )}>
             <div className="flex flex-wrap justify-center items-baseline gap-x-4">
               <span>Your Meaningful</span>
-              <span className="text-red-600 dark:text-red-400">Chinese Name hero.tsx</span>
+              <span className="text-red-600 dark:text-red-400">Chinese Name </span>
             </div>
             <div className="text-3xl md:text-4xl lg:text-5xl text-gray-700 dark:text-gray-300 font-medium">
               Crafted with Tradition
