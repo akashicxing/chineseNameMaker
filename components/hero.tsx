@@ -113,7 +113,7 @@ export default function Hero() {
             isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           )}>
             <Sparkles className="h-5 w-5" />
-            <span className="text-base font-semibold tracking-wide">Free Name Generator</span>
+            <span className="text-base font-semibold tracking-wide">Free Name Generator (Beta) • Unlimited Access • No Credit Card Required</span>
           </div>
 
           <h1 className={cn(
