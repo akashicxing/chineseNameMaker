@@ -1,0 +1,17 @@
+name = "chinese-name-maker"
+type = "javascript"
+account_id = ""
+workers_dev = true
+route = ""
+zone_id = ""
+
+[site]
+bucket = ".next"
+entry-point = "_worker"
+
+[build]
+command = "npm run build"
+watch_dir = "src"
+
+[build.upload]
+format = "service-worker" 

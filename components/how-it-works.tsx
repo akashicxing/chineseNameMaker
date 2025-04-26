@@ -118,7 +118,7 @@ export default function HowItWorks() {
             inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           )}>
             <a 
-              href="#pricing" 
+              href="/chinesenamegenerator" 
               className="inline-flex items-center text-red-600 dark:text-red-400 font-medium hover:text-red-700 dark:hover:text-red-300"
             >
               Ready to start your journey?
