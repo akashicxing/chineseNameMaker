@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { GitGraph, Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -42,9 +43,16 @@ export default function Header() {
       scrolled ? "bg-white/95 dark:bg-gray-900/95 backdrop-blur shadow-md py-3" : "bg-transparent py-5"
     )}>
       <div className="container mx-auto px-4 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2">
-          <GitGraph className="h-8 w-8 text-red-600 dark:text-red-400" />
-          <span className="font-bold text-xl text-gray-900 dark:text-white">NomChinois</span>
+        <Link href="/" className="flex items-center">
+          <div className="relative w-60 h-20">
+            <Image
+              src="/images/chineseNamelogo1.png"
+              alt="ChineseName Logo"
+              fill
+              className="object-contain"
+              priority
+            />
+          </div>
         </Link>
 
         <nav className="hidden md:flex space-x-8 text-sm">
@@ -70,17 +78,6 @@ export default function Header() {
             {t.nav.blog}
           </Link>
         </nav>
-
-        <div className="hidden md:flex items-center gap-4">
-          <ThemeSwitcher />
-          <LanguageSwitcher />
-          <Button variant="outline" className="font-medium">
-            {t.auth.signIn}
-          </Button>
-          <Button className="bg-red-600 hover:bg-red-700 text-white font-medium">
-            {t.auth.getStarted}
-          </Button>
-        </div>
 
         <button 
           className="md:hidden text-gray-700 dark:text-gray-300"
@@ -139,14 +136,6 @@ export default function Header() {
             >
               {t.nav.blog}
             </Link>
-            <div className="pt-4 border-t border-gray-200 dark:border-gray-700 flex flex-col space-y-3">
-              <div className="flex gap-2">
-                <ThemeSwitcher />
-                <LanguageSwitcher />
-              </div>
-              <Button variant="outline" className="w-full">{t.auth.signIn}</Button>
-              <Button className="w-full bg-red-600 hover:bg-red-700 text-white">{t.auth.getStarted}</Button>
-            </div>
           </nav>
         </div>
       )}

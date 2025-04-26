@@ -6,6 +6,7 @@ import { useInView } from 'react-intersection-observer';
 import { ChevronLeft, ChevronRight, Star, Quote } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
+import SectionWithBackground from './section-with-background';
 
 interface TestimonialProps {
   content: string;
@@ -18,7 +19,7 @@ interface TestimonialProps {
 
 const testimonials: TestimonialProps[] = [
   {
-    content: "Finding a Chinese name was important for my business relationships in Shanghai. NomChinois not only gave me a name that my colleagues could easily pronounce, but also one that reflected my personality and values. The cultural context they provided helps me share my name's story.",
+    content: "Finding a Chinese name was important for my business relationships in Shanghai. ChineseNameGenerator not only gave me a name that my colleagues could easily pronounce, but also one that reflected my personality and values. The cultural context they provided helps me share my name's story.",
     author: "Michael Thompson",
     role: "International Business Consultant",
     image: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=300",
@@ -26,7 +27,7 @@ const testimonials: TestimonialProps[] = [
     chineseName: "汤明智 (Táng Míngzhì)"
   },
   {
-    content: "As someone studying Chinese culture and language, having an authentic Chinese name was essential. The linguistics experts at NomChinois created a name that honors my French heritage while fitting beautifully into Chinese phonetics. I treasure both the name and the calligraphy artwork.",
+    content: "As someone studying Chinese culture and language, having an authentic Chinese name was essential. The linguistics experts at ChineseNameGenerator created a name that honors my French heritage while fitting beautifully into Chinese phonetics. I treasure both the name and the calligraphy artwork.",
     author: "Sophie Laurent",
     role: "Cultural Studies Researcher",
     image: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=300",
@@ -34,7 +35,7 @@ const testimonials: TestimonialProps[] = [
     chineseName: "罗晓月 (Luó Xiǎoyuè)"
   },
   {
-    content: "My experience with NomChinois was exceptional. They didn't just translate my name; they captured my essence in characters that have meaning and flow. The stroke animations helped me learn to write my name properly, and now I can confidently introduce myself to my Chinese students.",
+    content: "My experience with ChineseNameGenerator was exceptional. They didn't just translate my name; they captured my essence in characters that have meaning and flow. The stroke animations helped me learn to write my name properly, and now I can confidently introduce myself to my Chinese students.",
     author: "David Miller",
     role: "English Teacher in Beijing",
     image: "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=300",
@@ -74,7 +75,7 @@ export default function Testimonials() {
   };
 
   return (
-    <section id="testimonials" className="py-20 bg-gray-50 dark:bg-gray-900 overflow-hidden">
+    <SectionWithBackground backgroundImage="bg3.png" className="py-20 md:py-32">
       <div className="container mx-auto px-4" ref={ref}>
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
@@ -176,6 +177,6 @@ export default function Testimonials() {
           </div>
         </div>
       </div>
-    </section>
+    </SectionWithBackground>
   );
 }

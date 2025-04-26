@@ -88,16 +88,25 @@ export default function Hero() {
 
   return (
     <section className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden">
+      {/* Background image */}
+      <div 
+        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-10"
+        style={{
+          backgroundImage: 'url("/images/bg1.png")',
+          filter: 'saturate(0.7) brightness(1.1)'
+        }}
+      />
+      
       {/* Background decorative elements */}
-      <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-red-50 dark:bg-red-950/20 rounded-bl-full opacity-50" />
-      <div className="absolute bottom-0 left-0 w-1/4 h-1/4 bg-amber-50 dark:bg-amber-950/20 rounded-tr-full opacity-50" />
+      <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-red-50 dark:bg-red-950/20 rounded-bl-full opacity-50 z-[1]" />
+      <div className="absolute bottom-0 left-0 w-1/4 h-1/4 bg-amber-50 dark:bg-amber-950/20 rounded-tr-full opacity-50 z-[1]" />
       
       {/* Chinese character watermark */}
-      <div className="absolute right-10 top-1/3 text-9xl font-serif text-red-100 dark:text-red-950/30 opacity-30 select-none">
+      <div className="absolute right-10 top-1/3 text-9xl font-serif text-red-100 dark:text-red-950/30 opacity-30 select-none z-[1]">
         名
       </div>
       
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-4 relative z-[2]">
         <div className="max-w-3xl mx-auto text-center">
           <div className={cn(
             "inline-flex items-center gap-2 px-6 py-3 rounded-full bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 mb-8",
@@ -131,7 +140,7 @@ export default function Hero() {
             "max-w-2xl mx-auto transition-all duration-1000 delay-300",
             isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           )}>
-            <form onSubmit={handleSubmit} className="bg-white/80 dark:bg-gray-800/80 backdrop-blur p-6 rounded-xl shadow-lg" noValidate>
+            <form onSubmit={handleSubmit} className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-md p-6 rounded-xl shadow-lg" noValidate>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                 <div>
                   <Input

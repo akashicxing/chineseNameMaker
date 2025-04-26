@@ -12,7 +12,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'NomChinois - Chinese Name Customization Service',
+  title: 'ChineseNameGenerator - Chinese Name Customization Service',
   description: 'Personalized Chinese names for foreigners, combining traditional Chinese culture with modern customization.',
 };
 

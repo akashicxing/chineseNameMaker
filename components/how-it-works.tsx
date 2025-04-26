@@ -10,6 +10,7 @@ import {
   ArrowRight
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import SectionWithBackground from './section-with-background';
 
 interface StepProps {
   number: number;
@@ -87,7 +88,7 @@ export default function HowItWorks() {
   ];
 
   return (
-    <section id="how-it-works" className="py-20 bg-white dark:bg-gray-800">
+    <SectionWithBackground backgroundImage="bg2.png" className="py-20 md:py-32">
       <div className="container mx-auto px-4" ref={ref}>
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
@@ -126,6 +127,6 @@ export default function HowItWorks() {
           </div>
         </div>
       </div>
-    </section>
+    </SectionWithBackground>
   );
 }

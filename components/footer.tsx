@@ -1,3 +1,7 @@
+"use client";
+
+import Link from 'next/link';
+
 export default function Footer() {
   const currentYear = new Date().getFullYear();
   
@@ -6,7 +10,7 @@ export default function Footer() {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           <div>
-            <h3 className="text-white font-bold text-lg mb-4">NomChinois</h3>
+            <h3 className="text-white font-bold text-lg mb-4">ChineseNameGenerator</h3>
             <p className="mb-4">
               Bridging cultures through personalized Chinese names. Discover your authentic Chinese identity with our expert linguists and cultural specialists.
             </p>
@@ -20,19 +24,19 @@ export default function Footer() {
             <h3 className="text-white font-bold text-lg mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <a href="#features" className="hover:text-white transition-colors">Features</a>
+                <Link href="/features" className="hover:text-white transition-colors">Features</Link>
               </li>
               <li>
-                <a href="#how-it-works" className="hover:text-white transition-colors">How It Works</a>
+                <Link href="/how-it-works" className="hover:text-white transition-colors">How It Works</Link>
               </li>
               <li>
-                <a href="#testimonials" className="hover:text-white transition-colors">Testimonials</a>
+                <Link href="/testimonials" className="hover:text-white transition-colors">Testimonials</Link>
               </li>
               <li>
-                <a href="#pricing" className="hover:text-white transition-colors">Pricing</a>
+                <Link href="/pricing" className="hover:text-white transition-colors">Pricing</Link>
               </li>
               <li>
-                <a href="#faq" className="hover:text-white transition-colors">FAQ</a>
+                <Link href="/faq" className="hover:text-white transition-colors">FAQ</Link>
               </li>
             </ul>
           </div>
@@ -41,19 +45,13 @@ export default function Footer() {
             <h3 className="text-white font-bold text-lg mb-4">Resources</h3>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="hover:text-white transition-colors">Chinese Culture Blog</a>
+                <Link href="/blog/chinese-names-for-boys" className="hover:text-white transition-colors">Chinese Names for Boys</Link>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors">Naming Traditions</a>
+                <Link href="/blog/chinese-names-for-girls" className="hover:text-white transition-colors">Chinese Names for Girls</Link>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors">Character Dictionary</a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors">Pronunciation Guides</a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors">Business in China</a>
+                <Link href="/blog/chinese-name-pronunciation" className="hover:text-white transition-colors">Chinese Name Pronunciation</Link>
               </li>
             </ul>
           </div>
@@ -62,30 +60,30 @@ export default function Footer() {
             <h3 className="text-white font-bold text-lg mb-4">Legal</h3>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
+                <Link href="/legal/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+                <Link href="/legal/terms-of-service" className="hover:text-white transition-colors">Terms of Service</Link>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors">Cookie Policy</a>
+                <Link href="/legal/cookie-policy" className="hover:text-white transition-colors">Cookie Policy</Link>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors">GDPR Compliance</a>
+                <Link href="/legal/gdpr" className="hover:text-white transition-colors">GDPR Compliance</Link>
               </li>
             </ul>
           </div>
         </div>
         
         <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p>&copy; {currentYear} NomChinois. All rights reserved by akashicxing.</p>
+          <p>&copy; {currentYear} ChineseNameGenerator. All rights reserved by akashicxing.</p>
           <div className="mt-4 md:mt-0">
             <span className="text-sm">Available in:</span>
             <div className="flex space-x-4 mt-2">
-              <a href="#" className="hover:text-white transition-colors">English</a>
-              <a href="#" className="hover:text-white transition-colors">Français</a>
-              <a href="#" className="hover:text-white transition-colors">Español</a>
-              <a href="#" className="hover:text-white transition-colors">Deutsch</a>
+              <button className="hover:text-white transition-colors">English</button>
+              <button className="hover:text-white transition-colors">Français</button>
+              <button className="hover:text-white transition-colors">Español</button>
+              <button className="hover:text-white transition-colors">Deutsch</button>
             </div>
           </div>
         </div>
