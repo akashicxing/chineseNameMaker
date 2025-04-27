@@ -4,7 +4,6 @@ import { Inter } from 'next/font/google';
 import { ThemeProvider } from '@/components/theme-provider';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
-import Head from 'next/head';
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -24,7 +23,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <Head>
+      <head>
         {/* Google Analytics GA4 最新代码 */}
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-QLHLH6K772"></script>
         <script dangerouslySetInnerHTML={{ __html: `
@@ -33,7 +32,7 @@ export default function RootLayout({
           gtag('js', new Date());
           gtag('config', 'G-QLHLH6K772');
         `}} />
-      </Head>
+      </head>
       <body className={inter.className}>
         <ThemeProvider
           attribute="class"
