@@ -25,13 +25,13 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <Head>
-        {/* Google Analytics GA4 */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-DK0VCV3R5C"></script>
+        {/* Google Analytics GA4 最新代码 */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-QLHLH6K772"></script>
         <script dangerouslySetInnerHTML={{ __html: `
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', 'G-DK0VCV3R5C');
+          gtag('config', 'G-QLHLH6K772');
         `}} />
       </Head>
       <body className={inter.className}>
