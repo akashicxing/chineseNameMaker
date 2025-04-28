@@ -36,6 +36,9 @@ export default function ChineseNamePronunciation() {
           <p className="text-lg mb-8 leading-relaxed">
             Understanding how to pronounce Chinese names correctly is crucial for showing respect and cultural awareness. Unlike English names, Chinese names follow specific tonal patterns that can significantly change their meaning. This guide will help you master the basics of Chinese name pronunciation through real-world examples.
           </p>
+          <p>
+            👉 Don't have a Chinese name yet? <a href="/chinesenamegenerator" className="text-red-600 underline hover:text-red-800">Generate your unique Chinese name for free here</a>.
+          </p>
         </div>
 
         <h2 className="text-2xl font-semibold mt-12 mb-6">The Four Tones of Chinese Names</h2>

@@ -36,6 +36,9 @@ export default function ChineseMaleNames() {
           <p className="text-lg mb-8 leading-relaxed text-gray-700 dark:text-gray-300">
             在中国文化中，男孩的名字承载着家族期望、文化价值观和对未来的憧憬。与西方常常注重个人喜好或家族传统的命名方式不同，中国男性的名字是经过精心设计的字符组合，旨在影响命运并塑造品格。本指南探讨了中国男性命名传统独特的方面。
           </p>
+          <p>
+            👉 Want a meaningful Chinese name for yourself? <a href="/chinesenamegenerator" className="text-red-600 underline hover:text-red-800">Try our free name generator here</a>.
+          </p>
         </div>
 
         <h2 className="text-2xl font-semibold mt-12 mb-4">The Distinctive Nature of Chinese Male Names</h2>

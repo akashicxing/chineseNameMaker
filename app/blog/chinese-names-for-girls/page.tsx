@@ -22,7 +22,12 @@ export default function ChineseNamesForGirls() {
           />
         </div>
         
-        <p className="text-lg mb-8">When it comes to naming a child, Chinese parents put tremendous thought and care into selecting the perfect name. For girls especially, a beautiful Chinese name can carry deep meaning, cultural significance, and aspirations for the future. This guide will help foreigners understand the art of selecting an excellent Chinese name for girls.</p>
+        <p className="text-lg mb-8">
+          When it comes to naming a child, Chinese parents put tremendous thought and care into selecting the perfect name. For girls especially, a beautiful Chinese name can carry deep meaning, cultural significance, and aspirations for the future. This guide will help foreigners understand the art of selecting an excellent Chinese name for girls.
+        </p>
+        <p>
+          👉 Want a beautiful Chinese name for yourself or your family? <a href="/chinesenamegenerator" className="text-red-600 underline hover:text-red-800">Try our free name generator here</a>.
+        </p>
 
         <h2 className="text-2xl font-semibold mt-12 mb-4">The Significance of Names in Chinese Culture</h2>
         <p>In ancient China, there was a saying: "有其名必有其实，名为实之宾也" ("yǒu qí míng bì yǒu qí shí, míng wéi shí zhī bīn yě") – meaning "where there is a name, there must be reality; the name is the guest of reality." Names in Chinese culture are not merely labels but are believed to influence one's destiny and character.</p>
