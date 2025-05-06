@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { Metadata } from "next"
 import { FaMars, FaVenus, FaMicrophone } from 'react-icons/fa'
+import React from 'react'
 
 export const metadata: Metadata = {
   title: "Blog & Resources - Chinese Name Maker",
@@ -12,7 +13,7 @@ interface BlogPost {
   description: string
   date: string
   slug: string
-  icon: any
+  icon: React.ComponentType<{ className?: string }>
   category: string
   readingTime: string
 }
@@ -60,15 +61,7 @@ export default function BlogPage() {
           </p>
           
           <div className="grid gap-8">
-            {blogPosts.map((post: { 
-              title: string; 
-              description: string; 
-              date: string; 
-              slug: string;
-              icon: string;
-              category: string;
-              readingTime: string;
-            }) => (
+            {blogPosts.map((post: BlogPost) => (
               <Link
                 key={post.slug}
                 href={`/blog/${post.slug}`}
@@ -79,7 +72,7 @@ export default function BlogPage() {
                     <div className="flex-1">
                       <div className="flex items-center space-x-3 mb-4">
                         <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400">
-                          <post.icon className="w-4 h-4 mr-2" />
+                          {React.createElement(post.icon, { className: "w-4 h-4 mr-2" })}
                           {post.category}
                         </span>
                         <span className="text-sm text-gray-500 dark:text-gray-400">
