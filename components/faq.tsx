@@ -85,7 +85,7 @@ export default function FAQ({ t: tProp }: { t?: any }) {
           inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         )}>
           <Accordion type="single" collapsible className="space-y-4">
-            {t.faq.items.map((faq, index) => (
+            {t.faq.items.map((faq: any, index: number) => (
               <AccordionItem 
                 key={index} 
                 value={`item-${index}`} 
