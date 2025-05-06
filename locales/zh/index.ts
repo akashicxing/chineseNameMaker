@@ -11,7 +11,8 @@ export default {
     nameGenerator: '名字生成器',
     testimonials: '用户评价',
     faq: '常见问题',
-    blog: '博客'
+    blog: '博客',
+    pricing: '定价'
   },
   hero: {
     beta: '免费名字生成器（测试版）• 无限使用 • 无需信用卡',

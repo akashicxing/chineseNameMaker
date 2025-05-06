@@ -11,7 +11,8 @@ export default {
     nameGenerator: 'İsim Oluşturucu',
     testimonials: 'Kullanıcı Yorumları',
     faq: 'SSS',
-    blog: 'Blog'
+    blog: 'Blog',
+    pricing: 'Fiyatlandırma'
   },
   hero: {
     beta: 'Ücretsiz İsim Oluşturucu (Beta) • Sınırsız Erişim • Kredi Kartı Gerekmez',

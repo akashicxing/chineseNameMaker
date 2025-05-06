@@ -68,5 +68,6 @@ export default {
         chineseName: "高艺华 (Gāo Yìhuá)"
       }
     ]
-  }
+  },
+  pricing: 'Preços'
 } as const; 

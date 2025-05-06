@@ -11,7 +11,8 @@ export default {
     nameGenerator: 'Générateur de noms',
     testimonials: 'Témoignages',
     faq: 'FAQ',
-    blog: 'Blog'
+    blog: 'Blog',
+    pricing: 'Tarifs'
   },
   hero: {
     beta: 'Générateur de noms gratuit (Bêta) • Accès illimité • Pas de carte de crédit requise',

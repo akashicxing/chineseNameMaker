@@ -11,7 +11,8 @@ export default {
     nameGenerator: 'Name Generator',
     testimonials: 'Testimonials',
     faq: 'FAQ',
-    blog: 'Blog'
+    blog: 'Blog',
+    pricing: 'Pricing'
   },
   hero: {
     beta: 'Free Name Generator (Beta) • Unlimited Access • No Credit Card Required',
