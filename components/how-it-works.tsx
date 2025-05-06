@@ -27,9 +27,10 @@ interface StepProps {
   description: string;
   icon: React.ReactNode;
   isVisible: boolean;
+  index: number;
 }
 
-function Step({ number, title, description, icon, isVisible }: StepProps) {
+function Step({ number, title, description, icon, isVisible, index }: StepProps) {
   return (
     <div className={cn(
       "relative flex flex-col md:flex-row items-start gap-4 md:gap-8 transition-all duration-700 transform",
@@ -97,7 +98,7 @@ export default function HowItWorks({ t: tProp }: { t?: any }) {
 
         <div className="max-w-3xl mx-auto">
           <div className="space-y-16 md:space-y-24">
-            {steps.map((step, index) => (
+            {steps.map((step: any, index: number) => (
               <Step
                 key={index}
                 number={step.number}
@@ -105,6 +106,7 @@ export default function HowItWorks({ t: tProp }: { t?: any }) {
                 description={step.description}
                 icon={step.icon}
                 isVisible={inView}
+                index={index}
               />
             ))}
           </div>

@@ -184,7 +184,7 @@ export default function Hero({ t: tProp }: { t?: any }) {
                       <SelectValue placeholder={t.hero.form.nameLanguage.placeholder} />
                     </SelectTrigger>
                     <SelectContent>
-                      {Object.entries(t.languages || {}).map(([key, value]) => (
+                      {Object.entries(t.languages || {}).map(([key, value]: [string, any], index: number) => (
                         <SelectItem key={key} value={String(value)}>{String(value)}</SelectItem>
                       ))}
                     </SelectContent>

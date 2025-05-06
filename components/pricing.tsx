@@ -104,7 +104,7 @@ export default function Pricing() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {t.pricing.plans.map((plan, index) => {
+          {t.pricing.plans.map((plan: any, index: number) => {
             const p = plan as any;
             return (
               <div 

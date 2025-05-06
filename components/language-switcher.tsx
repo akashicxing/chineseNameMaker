@@ -44,7 +44,7 @@ export default function LanguageSwitcher() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        {supportedLanguages.map((lang) => (
+        {supportedLanguages.map((lang: { code: string; name: string }) => (
           <DropdownMenuItem
             key={lang.code}
             onClick={() => {

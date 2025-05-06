@@ -60,7 +60,15 @@ export default function BlogPage() {
           </p>
           
           <div className="grid gap-8">
-            {blogPosts.map((post) => (
+            {blogPosts.map((post: { 
+              title: string; 
+              description: string; 
+              date: string; 
+              slug: string;
+              icon: string;
+              category: string;
+              readingTime: string;
+            }) => (
               <Link
                 key={post.slug}
                 href={`/blog/${post.slug}`}

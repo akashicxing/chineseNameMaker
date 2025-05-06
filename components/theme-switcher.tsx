@@ -21,7 +21,7 @@ export default function ThemeSwitcher() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        {(Object.keys(themes) as Theme[]).map((themeKey) => (
+        {(Object.keys(themes) as Theme[]).map((themeKey: Theme) => (
           <DropdownMenuItem
             key={themeKey}
             onClick={() => setTheme(themeKey)}

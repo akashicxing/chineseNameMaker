@@ -91,7 +91,7 @@ export default function Testimonials({ t: tProp }: { t?: any }) {
                 </p>
                 
                 <div className="flex items-center space-x-1 mb-4">
-                  {[...Array(5)].map((_, i) => (
+                  {[...Array(5)].map((_: unknown, i: number) => (
                     <Star 
                       key={i} 
                       className={cn(
