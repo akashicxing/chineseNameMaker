@@ -10,10 +10,9 @@ import pt from '@/locales/pt/index';
 const localeMap = { en, zh, fr, de, ar, tr, pt } as const;
 
 export default function PricingPage({ params }: { params: { lang: string } }) {
-  const t = localeMap[params.lang as keyof typeof localeMap] || en;
   return (
     <div className="pt-20">
-      <Pricing t={t} />
+      <Pricing />
     </div>
   );
 } 
