@@ -15,6 +15,15 @@ import {
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import SectionWithBackground from './section-with-background';
+import { useLanguage } from '@/lib/i18n';
+import en from '@/locales/en/index';
+import zh from '@/locales/zh/index';
+import fr from '@/locales/fr/index';
+import de from '@/locales/de/index';
+import ar from '@/locales/ar/index';
+import tr from '@/locales/tr/index';
+
+const localeMap = { en, zh, fr, de, ar, tr } as const;
 
 interface FeatureProps {
   icon: React.ReactNode;
@@ -46,67 +55,40 @@ function Feature({ icon, title, description, isVisible, index }: FeatureProps) {
   );
 }
 
-export default function Features() {
+export default function Features({ t: tProp }: { t?: any }) {
+  const { language } = useLanguage();
+  const t = tProp || (localeMap[language as keyof typeof localeMap] || en);
   const [ref, inView] = useInView({
     triggerOnce: false,
     threshold: 0.1,
   });
 
-  const features = [
-    {
-      icon: <ScrollText className="h-6 w-6" />,
-      title: "Cultural Meaning",
-      description: "Each name comes with detailed cultural interpretations, revealing the deep meaning behind your Chinese name."
-    },
-    {
-      icon: <BookOpen className="h-6 w-6" />,
-      title: "Pinyin Guide",
-      description: "Clear pronunciation guides with both pinyin notation and phonetic equivalents in English."
-    },
-    {
-      icon: <Headphones className="h-6 w-6" />,
-      title: "Smart Pronunciation",
-      description: "Experience authentic pronunciation through advanced text-to-speech technology."
-    },
-    {
-      icon: <Pen className="h-6 w-6" />,
-      title: "Stroke Order",
-      description: "Learn the correct stroke order of Chinese characters through dynamic demonstrations."
-    },
-    {
-      icon: <Users className="h-6 w-6" />,
-      title: "Expert Guidance",
-      description: "Receive professional advice to ensure cultural authenticity in your Chinese name."
-    },
-    {
-      icon: <BookOpen className="h-6 w-6" />,
-      title: "Chinese Surnames",
-      description: "Explore the rich history and origins of traditional Chinese family names."
-    },
-    {
-      icon: <AlertTriangle className="h-6 w-6" />,
-      title: "Naming Taboos",
-      description: "Smart alerts about cultural taboos to ensure your name is culturally appropriate."
-    },
-    {
-      icon: <History className="h-6 w-6" />,
-      title: "Cultural Heritage",
-      description: "Names inspired by classical poetry, historical figures, and cultural elements."
-    }
-  ];
+  const features = t.features.items.map((item: any, idx: number) => ({
+    icon: [
+      <ScrollText className="h-6 w-6" />,
+      <BookOpen className="h-6 w-6" />,
+      <Headphones className="h-6 w-6" />,
+      <Pen className="h-6 w-6" />,
+      <Users className="h-6 w-6" />,
+      <BookOpen className="h-6 w-6" />,
+      <AlertTriangle className="h-6 w-6" />,
+      <History className="h-6 w-6" />
+    ][idx],
+    title: item.title,
+    description: item.description
+  }));
 
   return (
     <SectionWithBackground backgroundImage="bg-traditional.png" className="py-20 md:py-32">
       <div className="container mx-auto px-4" ref={ref}>
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            Culturally Rich <span className="text-red-600 dark:text-red-400">Features</span>
+            {t.features.title} <span className="text-red-600 dark:text-red-400">{t.nav.features}</span>
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300">
-            Discover our comprehensive tools and insights for finding your perfect Chinese name.
+            {t.features.subtitle}
           </p>
         </div>
-
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {features.map((feature, index) => (
             <Feature

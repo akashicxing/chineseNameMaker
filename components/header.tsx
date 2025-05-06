@@ -8,16 +8,24 @@ import { GitGraph, Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import LanguageSwitcher from './language-switcher';
 import ThemeSwitcher from './theme-switcher';
-import { useLanguage, translations } from '@/lib/i18n';
+import { useLanguage } from '@/lib/i18n';
 import { useTheme } from '@/lib/themes';
 import { usePathname } from "next/navigation"
+import en from '@/locales/en/index';
+import zh from '@/locales/zh/index';
+import fr from '@/locales/fr/index';
+import de from '@/locales/de/index';
+import ar from '@/locales/ar/index';
+import tr from '@/locales/tr/index';
+
+const localeMap = { en, zh, fr, de, ar, tr } as const;
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { language } = useLanguage();
   const { theme } = useTheme();
-  const t = translations[language];
+  const t = (localeMap[language as keyof typeof localeMap] || en) as typeof en;
   const pathname = usePathname()
 
   useEffect(() => {
@@ -79,12 +87,15 @@ export default function Header() {
           </Link>
         </nav>
 
-        <button 
-          className="md:hidden text-gray-700 dark:text-gray-300"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-        >
-          {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
+        <div className="flex items-center gap-4">
+          <LanguageSwitcher />
+          <button 
+            className="md:hidden text-gray-700 dark:text-gray-300"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile menu */}

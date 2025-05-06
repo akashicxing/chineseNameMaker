@@ -11,6 +11,15 @@ import {
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import SectionWithBackground from './section-with-background';
+import { useLanguage } from '@/lib/i18n';
+import en from '@/locales/en/index';
+import zh from '@/locales/zh/index';
+import fr from '@/locales/fr/index';
+import de from '@/locales/de/index';
+import ar from '@/locales/ar/index';
+import tr from '@/locales/tr/index';
+
+const localeMap = { en, zh, fr, de, ar, tr } as const;
 
 interface StepProps {
   number: number;
@@ -54,48 +63,35 @@ function Step({ number, title, description, icon, isVisible }: StepProps) {
   );
 }
 
-export default function HowItWorks() {
+export default function HowItWorks({ t: tProp }: { t?: any }) {
+  const { language } = useLanguage();
+  const t = tProp || (localeMap[language as keyof typeof localeMap] || en);
   const [ref, inView] = useInView({
     triggerOnce: false,
     threshold: 0.1,
   });
 
-  const steps = [
-    {
-      number: 1,
-      title: "Complete Your Profile",
-      description: "Tell us about yourself, your personality traits, aspirations, and what values you want reflected in your Chinese name.",
-      icon: <UserCircle className="h-6 w-6" />,
-    },
-    {
-      number: 2,
-      title: "Receive Personalized Recommendations",
-      description: "Our AI system will analyze your profile and create a harmonious Chinese name that matches your personality.",
-      icon: <ClipboardList className="h-6 w-6" />,
-    },
-    {
-      number: 3,
-      title: "Explore Cultural Context",
-      description: "Learn about the meaning, history, and cultural significance behind each character in your Chinese name.",
-      icon: <FileText className="h-6 w-6" />,
-    },
-    {
-      number: 4,
-      title: "Learn Your Chinese Name",
-      description: "Master the pronunciation and writing of your Chinese name, with options to explore premium features for more choices.",
-      icon: <CheckCircle className="h-6 w-6" />,
-    }
-  ];
+  const steps = t.howItWorks.steps.map((step: any, idx: number) => ({
+    number: idx + 1,
+    title: step.title,
+    description: step.description,
+    icon: [
+      <UserCircle className="h-6 w-6" />,
+      <ClipboardList className="h-6 w-6" />,
+      <FileText className="h-6 w-6" />,
+      <CheckCircle className="h-6 w-6" />
+    ][idx],
+  }));
 
   return (
     <SectionWithBackground backgroundImage="bg2.png" className="py-20 md:py-32">
       <div className="container mx-auto px-4" ref={ref}>
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            How It <span className="text-red-600 dark:text-red-400">Works</span>
+            {t.howItWorks.title} <span className="text-red-600 dark:text-red-400">{t.nav?.howItWorks || ''}</span>
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300">
-            Our simple process guides you to your perfect Chinese name in just four steps.
+            {t.howItWorks.subtitle}
           </p>
         </div>
 
@@ -112,7 +108,6 @@ export default function HowItWorks() {
               />
             ))}
           </div>
-          
           <div className={cn(
             "mt-16 text-center transition-all duration-700 delay-500",
             inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
@@ -121,7 +116,7 @@ export default function HowItWorks() {
               href="/chinesenamegenerator" 
               className="inline-flex items-center text-red-600 dark:text-red-400 font-medium hover:text-red-700 dark:hover:text-red-300"
             >
-              Ready to start your journey?
+              {t.howItWorks.cta}
               <ArrowRight className="ml-2 h-5 w-5" />
             </a>
           </div>

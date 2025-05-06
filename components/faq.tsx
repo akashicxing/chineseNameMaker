@@ -10,11 +10,20 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import SectionWithBackground from './section-with-background';
+import { useLanguage } from '@/lib/i18n';
+import en from '@/locales/en/index';
+import zh from '@/locales/zh/index';
+import fr from '@/locales/fr/index';
+import de from '@/locales/de/index';
+import ar from '@/locales/ar/index';
+import tr from '@/locales/tr/index';
 
 interface FAQItem {
   question: string;
   answer: string;
 }
+
+const localeMap = { en, zh, fr, de, ar, tr } as const;
 
 const faqs: FAQItem[] = [
   {
@@ -51,7 +60,9 @@ const faqs: FAQItem[] = [
   }
 ];
 
-export default function FAQ() {
+export default function FAQ({ t: tProp }: { t?: any }) {
+  const { language } = useLanguage();
+  const t = tProp || (localeMap[language as keyof typeof localeMap] || en);
   const [ref, inView] = useInView({
     triggerOnce: false,
     threshold: 0.1,
@@ -62,10 +73,10 @@ export default function FAQ() {
       <div className="container mx-auto px-4" ref={ref}>
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            Frequently Asked <span className="text-red-600 dark:text-red-400">Questions</span>
+            {t.faq.title} <span className="text-red-600 dark:text-red-400">FAQ</span>
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300">
-            Everything you need to know about our Chinese name service.
+            {t.faq.subtitle}
           </p>
         </div>
 
@@ -74,7 +85,7 @@ export default function FAQ() {
           inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         )}>
           <Accordion type="single" collapsible className="space-y-4">
-            {faqs.map((faq, index) => (
+            {t.faq.items.map((faq, index) => (
               <AccordionItem 
                 key={index} 
                 value={`item-${index}`} 
@@ -96,9 +107,9 @@ export default function FAQ() {
           inView ? "opacity-100" : "opacity-0"
         )}>
           <p className="text-gray-600 dark:text-gray-300">
-            Still have questions? 
+            {t.faq.contact.text}
             <a href="#contact" className="text-red-600 dark:text-red-400 font-medium ml-1 hover:underline">
-              Contact our support team
+              {t.faq.contact.link}
             </a>
           </p>
         </div>

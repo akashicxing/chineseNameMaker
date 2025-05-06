@@ -7,6 +7,15 @@ import { ChevronLeft, ChevronRight, Star, Quote } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import SectionWithBackground from './section-with-background';
+import { useLanguage } from '@/lib/i18n';
+import en from '@/locales/en/index';
+import zh from '@/locales/zh/index';
+import fr from '@/locales/fr/index';
+import de from '@/locales/de/index';
+import ar from '@/locales/ar/index';
+import tr from '@/locales/tr/index';
+
+const localeMap = { en, zh, fr, de, ar, tr } as const;
 
 interface TestimonialProps {
   content: string;
@@ -17,42 +26,10 @@ interface TestimonialProps {
   chineseName: string;
 }
 
-const testimonials: TestimonialProps[] = [
-  {
-    content: "Finding a Chinese name was important for my business relationships in Shanghai. ChineseNameGenerator not only gave me a name that my colleagues could easily pronounce, but also one that reflected my personality and values. The cultural context they provided helps me share my name's story.",
-    author: "Michael Thompson",
-    role: "International Business Consultant",
-    image: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=300",
-    rating: 5,
-    chineseName: "汤明智 (Táng Míngzhì)"
-  },
-  {
-    content: "As someone studying Chinese culture and language, having an authentic Chinese name was essential. The linguistics experts at ChineseNameGenerator created a name that honors my French heritage while fitting beautifully into Chinese phonetics. I treasure both the name and the calligraphy artwork.",
-    author: "Sophie Laurent",
-    role: "Cultural Studies Researcher",
-    image: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=300",
-    rating: 5,
-    chineseName: "罗晓月 (Luó Xiǎoyuè)"
-  },
-  {
-    content: "My experience with ChineseNameGenerator was exceptional. They didn't just translate my name; they captured my essence in characters that have meaning and flow. The stroke animations helped me learn to write my name properly, and now I can confidently introduce myself to my Chinese students.",
-    author: "David Miller",
-    role: "English Teacher in Beijing",
-    image: "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=300",
-    rating: 5,
-    chineseName: "米大卫 (Mǐ Dàwèi)"
-  },
-  {
-    content: "The thoughtfulness behind my Chinese name amazed me. Each character was selected to reflect my career as an artist while honoring traditional naming conventions. The digital certificate is beautifully designed, and I've even incorporated my Chinese name into my artwork.",
-    author: "Isabella Garcia",
-    role: "Contemporary Artist",
-    image: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=300",
-    rating: 4,
-    chineseName: "高艺华 (Gāo Yìhuá)"
-  },
-];
-
-export default function Testimonials() {
+export default function Testimonials({ t: tProp }: { t?: any }) {
+  const { language } = useLanguage();
+  const t = tProp || (localeMap[language as keyof typeof localeMap] || en);
+  const testimonials = t.testimonials.items;
   const [activeIndex, setActiveIndex] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
   const [ref, inView] = useInView({
@@ -79,10 +56,10 @@ export default function Testimonials() {
       <div className="container mx-auto px-4" ref={ref}>
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            Success <span className="text-red-600 dark:text-red-400">Stories</span>
+            {t.testimonials.title} <span className="text-red-600 dark:text-red-400"> </span>
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300">
-            Hear from our clients about their journey to finding their perfect Chinese identity.
+            {t.testimonials.subtitle}
           </p>
         </div>
 
@@ -151,7 +128,7 @@ export default function Testimonials() {
                 <ChevronLeft className="h-5 w-5" />
               </Button>
               
-              {testimonials.map((_, index) => (
+              {testimonials.map((_: any, index: any) => (
                 <button 
                   key={index}
                   className={cn(

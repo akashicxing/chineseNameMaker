@@ -10,6 +10,14 @@ import { DatePicker } from '@/components/ui/date-picker';
 import { GeneratedNameWithTranslation } from '@/types/name';
 import { speakChinese } from '@/lib/features';
 import { useLanguage } from '@/lib/i18n';
+import en from '@/locales/en/index';
+import zh from '@/locales/zh/index';
+import fr from '@/locales/fr/index';
+import de from '@/locales/de/index';
+import ar from '@/locales/ar/index';
+import tr from '@/locales/tr/index';
+
+const localeMap = { en, zh, fr, de, ar, tr } as const;
 
 const languages = [
   'English',
@@ -25,8 +33,9 @@ const languages = [
   'Other'
 ];
 
-export default function Hero() {
+export default function Hero({ t: tProp }: { t?: any }) {
   const { language } = useLanguage();
+  const t = tProp || (localeMap[language as keyof typeof localeMap] || en);
   const [isLoaded, setIsLoaded] = useState(false);
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -43,25 +52,24 @@ export default function Hero() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // 验证所有必填字段
     if (!firstName.trim()) {
-      alert('Please enter your first name');
+      alert(t.hero.form.firstName.error);
       return;
     }
     if (!lastName.trim()) {
-      alert('Please enter your last name');
+      alert(t.hero.form.lastName.error);
       return;
     }
     if (!nameLanguage) {
-      alert('Please select your original name language');
+      alert(t.hero.form.nameLanguage.error);
       return;
     }
     if (!birthDate) {
-      alert('Please select your date of birth');
+      alert(t.hero.form.birthDate.error);
       return;
     }
     if (!gender) {
-      alert('Please select your gender');
+      alert(t.hero.form.gender.error);
       return;
     }
 
@@ -113,7 +121,7 @@ export default function Hero() {
             isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           )}>
             <Sparkles className="h-5 w-5" />
-            <span className="text-base font-semibold tracking-wide">Free Name Generator (Beta) • Unlimited Access • No Credit Card Required</span>
+            <span className="text-base font-semibold tracking-wide">{t.hero.beta}</span>
           </div>
 
           <h1 className={cn(
@@ -121,11 +129,11 @@ export default function Hero() {
             isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           )}>
             <div className="flex flex-wrap justify-center items-baseline gap-x-4">
-              <span>Your Meaningful</span>
-              <span className="text-red-600 dark:text-red-400">Chinese Name </span>
+              <span>{t.hero.title.part1}</span>
+              <span className="text-red-600 dark:text-red-400">{t.hero.title.part2}</span>
             </div>
             <div className="text-3xl md:text-4xl lg:text-5xl text-gray-700 dark:text-gray-300 font-medium">
-              Crafted with Tradition
+              {t.hero.title.subtitle}
             </div>
           </h1>
           
@@ -133,7 +141,7 @@ export default function Hero() {
             "text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto transition-all duration-1000 delay-200",
             isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           )}>
-            Get your free personalized Chinese name that reflects your identity through the lens of 5,000 years of culture and tradition.
+            {t.hero.description}
           </p>
 
           <div className={cn(
@@ -148,9 +156,9 @@ export default function Hero() {
                     type="text"
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
-                    placeholder="First Name"
+                    placeholder={t.hero.form.firstName.placeholder}
                     className="bg-white/90 dark:bg-gray-900/90"
-                    onInvalid={(e: any) => e.target.setCustomValidity('Please enter your first name')}
+                    onInvalid={(e: any) => e.target.setCustomValidity(t.hero.form.firstName.error)}
                     onInput={(e: any) => e.target.setCustomValidity('')}
                   />
                 </div>
@@ -160,9 +168,9 @@ export default function Hero() {
                     type="text"
                     value={lastName}
                     onChange={(e) => setLastName(e.target.value)}
-                    placeholder="Last Name"
+                    placeholder={t.hero.form.lastName.placeholder}
                     className="bg-white/90 dark:bg-gray-900/90"
-                    onInvalid={(e: any) => e.target.setCustomValidity('Please enter your last name')}
+                    onInvalid={(e: any) => e.target.setCustomValidity(t.hero.form.lastName.error)}
                     onInput={(e: any) => e.target.setCustomValidity('')}
                   />
                 </div>
@@ -173,13 +181,11 @@ export default function Hero() {
                     required
                   >
                     <SelectTrigger className="w-full bg-white/90 dark:bg-gray-900/90">
-                      <SelectValue placeholder="Select Original Name Language" />
+                      <SelectValue placeholder={t.hero.form.nameLanguage.placeholder} />
                     </SelectTrigger>
                     <SelectContent>
-                      {languages.map((lang) => (
-                        <SelectItem key={lang} value={lang}>
-                          {lang}
-                        </SelectItem>
+                      {Object.entries(t.languages || {}).map(([key, value]) => (
+                        <SelectItem key={key} value={String(value)}>{String(value)}</SelectItem>
                       ))}
                     </SelectContent>
                   </Select>
@@ -199,12 +205,12 @@ export default function Hero() {
                     required
                   >
                     <SelectTrigger className="w-full bg-white/90 dark:bg-gray-900/90">
-                      <SelectValue placeholder="Select your gender" />
+                      <SelectValue placeholder={t.hero.form.gender.placeholder} />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="male">Male</SelectItem>
-                      <SelectItem value="female">Female</SelectItem>
-                      <SelectItem value="other">Other</SelectItem>
+                      <SelectItem value="male">{t.hero.form.gender.options.male}</SelectItem>
+                      <SelectItem value="female">{t.hero.form.gender.options.female}</SelectItem>
+                      <SelectItem value="other">{t.hero.form.gender.options.other}</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -217,11 +223,11 @@ export default function Hero() {
                 disabled={isGenerating}
               >
                 <Sparkles className="mr-2 h-5 w-5" />
-                {isGenerating ? 'Generating...' : 'Get My Free Chinese Name'}
+                {isGenerating ? t.hero.form.submit.generating : t.hero.form.submit.default}
               </Button>
 
               <p className="text-sm text-gray-500 dark:text-gray-400 mt-4 text-center">
-                No credit card required • Instant name generation • Premium features available
+                {t.hero.form.disclaimer}
               </p>
             </form>
 
