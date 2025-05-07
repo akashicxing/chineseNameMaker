@@ -1,3 +1,28 @@
+const fs = require('fs');
+const path = require('path');
+
+// 获取所有语言
+const localesDir = path.join(__dirname, 'locales');
+const languages = fs.readdirSync(localesDir).filter(f => fs.statSync(path.join(localesDir, f)).isDirectory());
+
+// 获取所有页面
+const appLangDir = path.join(__dirname, 'app', '[lang]');
+const staticPages = fs.readdirSync(appLangDir).filter(f => fs.statSync(path.join(appLangDir, f)).isDirectory());
+
+// 生成所有多语言页面路径
+const allPaths = [];
+for (const lang of languages) {
+  // 根页面
+  allPaths.push({ loc: `/${lang}`, changefreq: 'weekly', priority: 1.0 });
+  for (const page of staticPages) {
+    // 检查是否有 page.tsx
+    const pageFile = path.join(appLangDir, page, 'page.tsx');
+    if (fs.existsSync(pageFile)) {
+      allPaths.push({ loc: `/${lang}/${page}`, changefreq: 'monthly', priority: 0.7 });
+    }
+  }
+}
+
 module.exports = {
   siteUrl: 'https://chinesenamegenerator.online',
   generateRobotsTxt: true,
@@ -5,21 +30,5 @@ module.exports = {
   priority: 0.7,
   sitemapSize: 7000,
   exclude: ['/api/*'],
-  additionalPaths: async (config) => [
-    { loc: '/', changefreq: 'weekly', priority: 1.0 },
-    { loc: '/chinesenamegenerator', changefreq: 'weekly', priority: 0.9 },
-    { loc: '/blog', changefreq: 'weekly', priority: 0.8 },
-    { loc: '/blog/chinese-name-pronunciation', changefreq: 'monthly', priority: 0.7 },
-    { loc: '/blog/chinese-names-for-boys', changefreq: 'monthly', priority: 0.7 },
-    { loc: '/blog/chinese-names-for-girls', changefreq: 'monthly', priority: 0.7 },
-    { loc: '/features', changefreq: 'monthly', priority: 0.7 },
-    { loc: '/how-it-works', changefreq: 'monthly', priority: 0.7 },
-    { loc: '/testimonials', changefreq: 'monthly', priority: 0.7 },
-    { loc: '/faq', changefreq: 'monthly', priority: 0.7 },
-    { loc: '/pricing', changefreq: 'monthly', priority: 0.7 },
-    { loc: '/legal/privacy-policy', changefreq: 'yearly', priority: 0.5 },
-    { loc: '/legal/terms-of-service', changefreq: 'yearly', priority: 0.5 },
-    { loc: '/legal/cookie-policy', changefreq: 'yearly', priority: 0.5 },
-    { loc: '/legal/gdpr', changefreq: 'yearly', priority: 0.5 },
-  ],
+  additionalPaths: async (config) => allPaths,
 }; 
