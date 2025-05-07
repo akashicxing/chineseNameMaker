@@ -16,6 +16,7 @@ import fr from '@/locales/fr/index';
 import de from '@/locales/de/index';
 import ar from '@/locales/ar/index';
 import tr from '@/locales/tr/index';
+import { signIn, useSession } from "next-auth/react";
 
 const localeMap = { en, zh, fr, de, ar, tr } as const;
 
@@ -44,6 +45,7 @@ export default function Hero({ t: tProp }: { t?: any }) {
   const [gender, setGender] = useState('');
   const [generatedName, setGeneratedName] = useState<GeneratedNameWithTranslation | null>(null);
   const [isGenerating, setIsGenerating] = useState(false);
+  const { data: session } = useSession();
   
   useEffect(() => {
     setIsLoaded(true);
@@ -51,28 +53,12 @@ export default function Hero({ t: tProp }: { t?: any }) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    if (!firstName.trim()) {
-      alert(t.hero.form.firstName.error);
+    if (!session) {
+      if (window.confirm("请先登录 Google 账号后使用名字生成功能，是否现在登录？")) {
+        signIn("google");
+      }
       return;
     }
-    if (!lastName.trim()) {
-      alert(t.hero.form.lastName.error);
-      return;
-    }
-    if (!nameLanguage) {
-      alert(t.hero.form.nameLanguage.error);
-      return;
-    }
-    if (!birthDate) {
-      alert(t.hero.form.birthDate.error);
-      return;
-    }
-    if (!gender) {
-      alert(t.hero.form.gender.error);
-      return;
-    }
-
     try {
       setIsGenerating(true);
       const response = await fetch('/api/name');
@@ -84,7 +70,7 @@ export default function Hero({ t: tProp }: { t?: any }) {
       }
     } catch (error) {
       console.error('Error generating name:', error);
-      alert('Failed to generate name. Please try again.');
+      alert(error.message || 'Failed to generate name. Please try again.');
     } finally {
       setIsGenerating(false);
     }
@@ -152,33 +138,26 @@ export default function Hero({ t: tProp }: { t?: any }) {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                 <div>
                   <Input
-                    required
                     type="text"
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
                     placeholder={t.hero.form.firstName.placeholder}
                     className="bg-white/90 dark:bg-gray-900/90"
-                    onInvalid={(e: any) => e.target.setCustomValidity(t.hero.form.firstName.error)}
-                    onInput={(e: any) => e.target.setCustomValidity('')}
                   />
                 </div>
                 <div>
                   <Input
-                    required
                     type="text"
                     value={lastName}
                     onChange={(e) => setLastName(e.target.value)}
                     placeholder={t.hero.form.lastName.placeholder}
                     className="bg-white/90 dark:bg-gray-900/90"
-                    onInvalid={(e: any) => e.target.setCustomValidity(t.hero.form.lastName.error)}
-                    onInput={(e: any) => e.target.setCustomValidity('')}
                   />
                 </div>
                 <div>
                   <Select 
                     value={nameLanguage} 
                     onValueChange={setNameLanguage}
-                    required
                   >
                     <SelectTrigger className="w-full bg-white/90 dark:bg-gray-900/90">
                       <SelectValue placeholder={t.hero.form.nameLanguage.placeholder} />
@@ -192,7 +171,6 @@ export default function Hero({ t: tProp }: { t?: any }) {
                 </div>
                 <div>
                   <DatePicker
-                    required
                     value={birthDate ? new Date(birthDate) : undefined}
                     onChange={(date) => setBirthDate(date ? date.toISOString().split('T')[0] : '')}
                     className="w-full bg-white/90 dark:bg-gray-900/90"
@@ -202,7 +180,6 @@ export default function Hero({ t: tProp }: { t?: any }) {
                   <Select 
                     value={gender} 
                     onValueChange={setGender}
-                    required
                   >
                     <SelectTrigger className="w-full bg-white/90 dark:bg-gray-900/90">
                       <SelectValue placeholder={t.hero.form.gender.placeholder} />
