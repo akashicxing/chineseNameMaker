@@ -70,7 +70,7 @@ export default function Hero({ t: tProp }: { t?: any }) {
       }
     } catch (error) {
       console.error('Error generating name:', error);
-      alert(error.message || 'Failed to generate name. Please try again.');
+      alert(error instanceof Error ? error.message : 'Failed to generate name. Please try again.');
     } finally {
       setIsGenerating(false);
     }
