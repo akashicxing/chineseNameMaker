@@ -17,6 +17,7 @@ import fr from '@/locales/fr/index';
 import de from '@/locales/de/index';
 import ar from '@/locales/ar/index';
 import tr from '@/locales/tr/index';
+import LoginButton from './LoginButton';
 
 const localeMap = { en, zh, fr, de, ar, tr } as const;
 
@@ -89,6 +90,7 @@ export default function Header() {
 
         <div className="flex items-center gap-4">
           <LanguageSwitcher />
+          <LoginButton />
           <button 
             className="md:hidden text-gray-700 dark:text-gray-300"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
