@@ -308,6 +308,7 @@ export default function Hero({ t: tProp }: { t?: any }) {
                 "transform"
               )}>
                 <div className="text-center">
+                  {/* 名字主显示 */}
                   <h3 className="text-4xl font-bold text-gray-900 dark:text-white mb-2">
                     <div className="flex items-center justify-center gap-4">
                       <span>{generatedName.fullName || `${generatedName.surname?.surname}${generatedName.name}`}</span>
@@ -324,22 +325,104 @@ export default function Hero({ t: tProp }: { t?: any }) {
                   <p className="text-lg text-red-600 dark:text-red-400 font-medium mb-6">
                     {generatedName.pinyin?.fullName || `${generatedName.pinyin?.surname} ${generatedName.pinyin?.givenName}`}
                   </p>
-                  <div className="space-y-4">
-                    <div className="bg-gray-50 dark:bg-gray-900 p-4 rounded-lg">
-                      <p className="text-gray-600 dark:text-gray-300 mb-2">
-                        From {generatedName.englishTranslation?.dynasty || generatedName.chineseContent?.dynasty} · {generatedName.englishTranslation?.author || generatedName.chineseContent?.author}
-                      </p>
-                      <p className="text-gray-800 dark:text-gray-200">
-                        "{generatedName.englishTranslation?.title || generatedName.chineseContent?.title}"
-                      </p>
-                      <p className="text-gray-600 dark:text-gray-300 mt-4">
-                        {generatedName.englishTranslation?.sentence || generatedName.chineseContent?.sentence}
-                      </p>
-                      {(generatedName.englishTranslation?.meaning || generatedName.chineseContent?.meaning) && (
-                        <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-600">
-                          <p className="text-sm text-gray-600 dark:text-gray-400">
-                            {generatedName.englishTranslation?.meaning || generatedName.chineseContent?.meaning}
+
+                  {/* 姓氏信息 */}
+                  {generatedName.surname && (
+                    <div className="mb-6 bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
+                      <h4 className="text-lg font-semibold text-blue-800 dark:text-blue-200 mb-2">
+                        关于姓氏 "{generatedName.surname.surname}"
+                      </h4>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+                        {generatedName.surname.rank && (
+                          <p className="text-gray-600 dark:text-gray-300">
+                            <span className="font-medium">全国排名:</span> 第{generatedName.surname.rank}位
                           </p>
+                        )}
+                        {generatedName.surname.population && (
+                          <p className="text-gray-600 dark:text-gray-300">
+                            <span className="font-medium">人口:</span> {generatedName.surname.population}
+                          </p>
+                        )}
+                        {generatedName.surname.percentage && (
+                          <p className="text-gray-600 dark:text-gray-300">
+                            <span className="font-medium">占比:</span> {generatedName.surname.percentage}
+                          </p>
+                        )}
+                        {generatedName.surname.regions && generatedName.surname.regions.length > 0 && (
+                          <p className="text-gray-600 dark:text-gray-300">
+                            <span className="font-medium">主要分布:</span> {generatedName.surname.regions.join('、')}
+                          </p>
+                        )}
+                      </div>
+                      {generatedName.surname.famous_people && generatedName.surname.famous_people.length > 0 && (
+                        <p className="text-gray-600 dark:text-gray-300 mt-2">
+                          <span className="font-medium">名人代表:</span> {generatedName.surname.famous_people.join('、')}
+                        </p>
+                      )}
+                    </div>
+                  )}
+
+                  {/* 文学出处 */}
+                  <div className="space-y-4">
+                    <div className="bg-gray-50 dark:bg-gray-900 p-4 rounded-lg text-left">
+                      <h4 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-3 text-center">
+                        文学出处 Literary Source
+                      </h4>
+                      
+                      {/* 中文信息 */}
+                      <div className="mb-4 p-3 bg-red-50 dark:bg-red-900/20 rounded">
+                        <p className="text-gray-600 dark:text-gray-300 mb-2">
+                          <span className="font-medium">朝代:</span> {generatedName.chineseContent?.dynasty}
+                          <span className="ml-4 font-medium">作者:</span> {generatedName.chineseContent?.author}
+                        </p>
+                        <p className="text-gray-600 dark:text-gray-300 mb-2">
+                          <span className="font-medium">作品:</span> 《{generatedName.chineseContent?.title}》
+                        </p>
+                        {generatedName.chineseContent?.book && (
+                          <p className="text-gray-600 dark:text-gray-300 mb-2">
+                            <span className="font-medium">典籍:</span> 《{generatedName.chineseContent.book}》
+                          </p>
+                        )}
+                        <p className="text-gray-800 dark:text-gray-200 font-medium">
+                          "{generatedName.chineseContent?.sentence}"
+                        </p>
+                      </div>
+
+                      {/* 英文翻译 */}
+                      <div className="p-3 bg-green-50 dark:bg-green-900/20 rounded">
+                        <p className="text-gray-600 dark:text-gray-300 mb-2">
+                          <span className="font-medium">Dynasty:</span> {generatedName.englishTranslation?.dynasty}
+                          <span className="ml-4 font-medium">Author:</span> {generatedName.englishTranslation?.author}
+                        </p>
+                        <p className="text-gray-600 dark:text-gray-300 mb-2">
+                          <span className="font-medium">Work:</span> "{generatedName.englishTranslation?.title}"
+                        </p>
+                        {generatedName.englishTranslation?.book && (
+                          <p className="text-gray-600 dark:text-gray-300 mb-2">
+                            <span className="font-medium">Collection:</span> "{generatedName.englishTranslation.book}"
+                          </p>
+                        )}
+                        <p className="text-gray-800 dark:text-gray-200 font-medium italic">
+                          "{generatedName.englishTranslation?.sentence}"
+                        </p>
+                      </div>
+
+                      {/* 名字含义 */}
+                      {(generatedName.chineseContent?.meaning || generatedName.englishTranslation?.meaning) && (
+                        <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-600">
+                          <h5 className="font-semibold text-gray-800 dark:text-gray-200 mb-2 text-center">
+                            名字寓意 Name Meaning
+                          </h5>
+                          {generatedName.chineseContent?.meaning && (
+                            <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                              {generatedName.chineseContent.meaning}
+                            </p>
+                          )}
+                          {generatedName.englishTranslation?.meaning && (
+                            <p className="text-sm text-gray-600 dark:text-gray-400 italic">
+                              {generatedName.englishTranslation.meaning}
+                            </p>
+                          )}
                         </div>
                       )}
                     </div>
