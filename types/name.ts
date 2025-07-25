@@ -27,17 +27,31 @@ export interface GeneratedName {
   dynasty: string;
 }
 
-export interface GeneratedNameWithTranslation extends GeneratedName {
+export interface GeneratedNameWithTranslation {
+  name: string;
+  fullName: string;
+  surname: Surname;
   pinyin: {
     surname: string;
     givenName: string;
+    fullName: string;
+  };
+  chineseContent: {
+    sentence: string;
+    book: string;
+    title: string;
+    author: string;
+    dynasty: string;
+    fullContent: string;
+    meaning: string;
   };
   englishTranslation: {
     sentence: string;
-    content: string;
+    book: string;
     title: string;
     author: string;
-    book: string;
     dynasty: string;
+    fullContent: string;
+    meaning: string;
   };
 } 

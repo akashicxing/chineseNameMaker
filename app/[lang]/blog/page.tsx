@@ -16,7 +16,7 @@ const localeMap = { en, zh, fr, de, ar, tr, pt } as const;
 const blogPosts = [
   {
     id: 'gamertaggenerator',
-    title: 'Chinese Typography and Colors: The Art of Visual Identity in Names',
+    title: 'Gamertag Generator: The Art of Visual Identity in Names',
     excerpt: 'Explore how typography and colors enhance the beauty and meaning of Chinese names, from traditional calligraphy to modern design.',
     image: '/images/blog/typography/typography.png',
     date: '2024-12-20',

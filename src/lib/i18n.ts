@@ -28,7 +28,7 @@ export const translations = {
       getStarted: 'Get Started',
     },
     hero: {
-      title: 'Your Meaningful Chinese Name, Crafted with Tradition',
+      title: 'Chinese Name, Crafted with Tradition',
       subtitle: 'Discover a personalized Chinese name that reflects your identity through the lens of 5,000 years of culture and tradition.',
       generate: 'Generate My Chinese Name',
     },

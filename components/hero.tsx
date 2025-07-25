@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Sparkles, ChevronDown, Volume2 } from 'lucide-react';
+import { Sparkles, ChevronDown, Volume2, Zap, Brain } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { DatePicker } from '@/components/ui/date-picker';
 import { GeneratedNameWithTranslation } from '@/types/name';
@@ -16,7 +16,6 @@ import fr from '@/locales/fr/index';
 import de from '@/locales/de/index';
 import ar from '@/locales/ar/index';
 import tr from '@/locales/tr/index';
-import { signIn, useSession } from "next-auth/react";
 
 const localeMap = { en, zh, fr, de, ar, tr } as const;
 
@@ -34,10 +33,13 @@ const languages = [
   'Other'
 ];
 
+type GenerationMode = 'instant' | 'smart';
+
 export default function Hero({ t: tProp }: { t?: any }) {
   const { language } = useLanguage();
   const t = tProp || (localeMap[language as keyof typeof localeMap] || en);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [generationMode, setGenerationMode] = useState<GenerationMode>('instant');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [nameLanguage, setNameLanguage] = useState('');
@@ -45,7 +47,6 @@ export default function Hero({ t: tProp }: { t?: any }) {
   const [gender, setGender] = useState('');
   const [generatedName, setGeneratedName] = useState<GeneratedNameWithTranslation | null>(null);
   const [isGenerating, setIsGenerating] = useState(false);
-  const { data: session } = useSession();
   
   useEffect(() => {
     setIsLoaded(true);
@@ -53,20 +54,61 @@ export default function Hero({ t: tProp }: { t?: any }) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!session) {
-      if (window.confirm("请先登录 Google 账号后使用名字生成功能，是否现在登录？")) {
-        signIn("google");
+    
+    // AI Smart模式的表单验证
+    if (generationMode === 'smart') {
+      if (!firstName.trim()) {
+        alert('Please enter your first name for AI Smart mode');
+        return;
       }
-      return;
+      if (!lastName.trim()) {
+        alert('Please enter your last name for AI Smart mode');
+        return;
+      }
+      if (!gender) {
+        alert('Please select your gender for AI Smart mode');
+        return;
+      }
+      if (!nameLanguage) {
+        alert('Please select your original name language for AI Smart mode');
+        return;
+      }
     }
+    
     try {
       setIsGenerating(true);
-      const response = await fetch('/api/name');
-      const result = await response.json();
-      if (result.success) {
-        setGeneratedName(result.data);
+      
+      if (generationMode === 'instant') {
+        // Instant模式：直接调用原有API
+        const response = await fetch('/api/name');
+        const result = await response.json();
+        if (result.success) {
+          setGeneratedName(result.data);
+        } else {
+          throw new Error(result.error || 'Failed to generate name');
+        }
       } else {
-        throw new Error(result.error || 'Failed to generate name');
+        // AI Smart模式：传递用户信息调用大模型
+        const response = await fetch('/api/name', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            mode: 'smart',
+            firstName: firstName.trim(),
+            lastName: lastName.trim(),
+            nameLanguage,
+            birthDate,
+            gender
+          })
+        });
+        const result = await response.json();
+        if (result.success) {
+          setGeneratedName(result.data);
+        } else {
+          throw new Error(result.error || 'Failed to generate name');
+        }
       }
     } catch (error) {
       console.error('Error generating name:', error);
@@ -135,63 +177,103 @@ export default function Hero({ t: tProp }: { t?: any }) {
             isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           )}>
             <form onSubmit={handleSubmit} className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-md p-6 rounded-xl shadow-lg" noValidate>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                <div>
-                  <Input
-                    type="text"
-                    value={firstName}
-                    onChange={(e) => setFirstName(e.target.value)}
-                    placeholder={t.hero.form.firstName.placeholder}
-                    className="bg-white/90 dark:bg-gray-900/90"
-                  />
-                </div>
-                <div>
-                  <Input
-                    type="text"
-                    value={lastName}
-                    onChange={(e) => setLastName(e.target.value)}
-                    placeholder={t.hero.form.lastName.placeholder}
-                    className="bg-white/90 dark:bg-gray-900/90"
-                  />
-                </div>
-                <div>
-                  <Select 
-                    value={nameLanguage} 
-                    onValueChange={setNameLanguage}
+              
+              {/* Generation Mode Selection */}
+              <div className="mb-6">
+                <div className="flex gap-2 p-1 bg-gray-100 dark:bg-gray-700 rounded-lg">
+                  <button
+                    type="button"
+                    onClick={() => setGenerationMode('instant')}
+                    className={cn(
+                      "flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-md font-medium transition-all",
+                      generationMode === 'instant'
+                        ? "bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 shadow-sm"
+                        : "text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
+                    )}
                   >
-                    <SelectTrigger className="w-full bg-white/90 dark:bg-gray-900/90">
-                      <SelectValue placeholder={t.hero.form.nameLanguage.placeholder} />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {Object.entries(t.languages || {}).map(([key, value]: [string, any], index: number) => (
-                        <SelectItem key={key} value={String(value)}>{String(value)}</SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
-                <div>
-                  <DatePicker
-                    value={birthDate ? new Date(birthDate) : undefined}
-                    onChange={(date) => setBirthDate(date ? date.toISOString().split('T')[0] : '')}
-                    className="w-full bg-white/90 dark:bg-gray-900/90"
-                  />
-                </div>
-                <div className="md:col-span-2">
-                  <Select 
-                    value={gender} 
-                    onValueChange={setGender}
+                    <Zap className="h-4 w-4" />
+                    <span>Instant</span>
+                    <span className="text-xs bg-orange-100 text-orange-600 px-2 py-0.5 rounded">Fast Series</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setGenerationMode('smart')}
+                    className={cn(
+                      "flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-md font-medium transition-all",
+                      generationMode === 'smart'
+                        ? "bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 shadow-sm"
+                        : "text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
+                    )}
                   >
-                    <SelectTrigger className="w-full bg-white/90 dark:bg-gray-900/90">
-                      <SelectValue placeholder={t.hero.form.gender.placeholder} />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="male">{t.hero.form.gender.options.male}</SelectItem>
-                      <SelectItem value="female">{t.hero.form.gender.options.female}</SelectItem>
-                      <SelectItem value="other">{t.hero.form.gender.options.other}</SelectItem>
-                    </SelectContent>
-                  </Select>
+                    <Brain className="h-4 w-4" />
+                    <span>AI Smart</span>
+                    <span className="text-xs bg-purple-100 text-purple-600 px-2 py-0.5 rounded">Custom Styles</span>
+                  </button>
                 </div>
               </div>
+
+              {/* Personal Information Form - Only shown for AI Smart mode */}
+              {generationMode === 'smart' && (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 animate-in slide-in-from-top duration-300">
+                  <div>
+                    <Input
+                      type="text"
+                      value={firstName}
+                      onChange={(e) => setFirstName(e.target.value)}
+                      placeholder={t.hero.form.firstName.placeholder}
+                      className="bg-white/90 dark:bg-gray-900/90"
+                      required={generationMode === 'smart'}
+                    />
+                  </div>
+                  <div>
+                    <Input
+                      type="text"
+                      value={lastName}
+                      onChange={(e) => setLastName(e.target.value)}
+                      placeholder={t.hero.form.lastName.placeholder}
+                      className="bg-white/90 dark:bg-gray-900/90"
+                      required={generationMode === 'smart'}
+                    />
+                  </div>
+                  <div>
+                    <Select 
+                      value={nameLanguage} 
+                      onValueChange={setNameLanguage}
+                    >
+                      <SelectTrigger className="w-full bg-white/90 dark:bg-gray-900/90">
+                        <SelectValue placeholder={t.hero.form.nameLanguage.placeholder} />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {languages.map((lang, index) => (
+                          <SelectItem key={index} value={lang}>{lang}</SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  <div>
+                    <DatePicker
+                      value={birthDate ? new Date(birthDate) : undefined}
+                      onChange={(date) => setBirthDate(date ? date.toISOString().split('T')[0] : '')}
+                      className="w-full bg-white/90 dark:bg-gray-900/90"
+                    />
+                  </div>
+                  <div className="md:col-span-2">
+                    <Select 
+                      value={gender} 
+                      onValueChange={setGender}
+                    >
+                      <SelectTrigger className="w-full bg-white/90 dark:bg-gray-900/90">
+                        <SelectValue placeholder={t.hero.form.gender.placeholder} />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="male">{t.hero.form.gender.options.male}</SelectItem>
+                        <SelectItem value="female">{t.hero.form.gender.options.female}</SelectItem>
+                        <SelectItem value="other">{t.hero.form.gender.options.other}</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </div>
+              )}
 
               <Button 
                 type="submit" 
@@ -199,12 +281,24 @@ export default function Hero({ t: tProp }: { t?: any }) {
                 size="lg"
                 disabled={isGenerating}
               >
-                <Sparkles className="mr-2 h-5 w-5" />
-                {isGenerating ? t.hero.form.submit.generating : t.hero.form.submit.default}
+                {generationMode === 'instant' ? (
+                  <>
+                    <Zap className="mr-2 h-5 w-5" />
+                    {isGenerating ? 'Generating...' : 'Generate'}
+                  </>
+                ) : (
+                  <>
+                    <Brain className="mr-2 h-5 w-5" />
+                    {isGenerating ? t.hero.form.submit.generating : t.hero.form.submit.default}
+                  </>
+                )}
               </Button>
 
               <p className="text-sm text-gray-500 dark:text-gray-400 mt-4 text-center">
-                {t.hero.form.disclaimer}
+                {generationMode === 'instant' 
+                  ? 'No credit card required • Instant name generation'
+                  : t.hero.form.disclaimer
+                }
               </p>
             </form>
 
@@ -216,11 +310,11 @@ export default function Hero({ t: tProp }: { t?: any }) {
                 <div className="text-center">
                   <h3 className="text-4xl font-bold text-gray-900 dark:text-white mb-2">
                     <div className="flex items-center justify-center gap-4">
-                      <span>{generatedName.surname.surname}{generatedName.name}</span>
+                      <span>{generatedName.fullName || `${generatedName.surname?.surname}${generatedName.name}`}</span>
                       <Button
                         variant="ghost"
                         size="icon"
-                        onClick={() => handleSpeak(`${generatedName.surname.surname}${generatedName.name}`)}
+                        onClick={() => handleSpeak(generatedName.fullName || `${generatedName.surname?.surname}${generatedName.name}`)}
                         className="rounded-full hover:bg-red-100 dark:hover:bg-red-900"
                       >
                         <Volume2 className="h-5 w-5" />
@@ -228,19 +322,26 @@ export default function Hero({ t: tProp }: { t?: any }) {
                     </div>
                   </h3>
                   <p className="text-lg text-red-600 dark:text-red-400 font-medium mb-6">
-                    {generatedName.pinyin.surname} {generatedName.pinyin.givenName}
+                    {generatedName.pinyin?.fullName || `${generatedName.pinyin?.surname} ${generatedName.pinyin?.givenName}`}
                   </p>
                   <div className="space-y-4">
                     <div className="bg-gray-50 dark:bg-gray-900 p-4 rounded-lg">
                       <p className="text-gray-600 dark:text-gray-300 mb-2">
-                        From {generatedName.englishTranslation.dynasty} · {generatedName.englishTranslation.author}
+                        From {generatedName.englishTranslation?.dynasty || generatedName.chineseContent?.dynasty} · {generatedName.englishTranslation?.author || generatedName.chineseContent?.author}
                       </p>
                       <p className="text-gray-800 dark:text-gray-200">
-                        "{generatedName.englishTranslation.title}"
+                        "{generatedName.englishTranslation?.title || generatedName.chineseContent?.title}"
                       </p>
                       <p className="text-gray-600 dark:text-gray-300 mt-4">
-                        {generatedName.englishTranslation.sentence}
+                        {generatedName.englishTranslation?.sentence || generatedName.chineseContent?.sentence}
                       </p>
+                      {(generatedName.englishTranslation?.meaning || generatedName.chineseContent?.meaning) && (
+                        <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-600">
+                          <p className="text-sm text-gray-600 dark:text-gray-400">
+                            {generatedName.englishTranslation?.meaning || generatedName.chineseContent?.meaning}
+                          </p>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
