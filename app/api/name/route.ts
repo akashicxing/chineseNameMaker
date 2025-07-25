@@ -8,7 +8,7 @@ const FREE_LIMIT = 50; // 增加免费次数限制
 
 // 初始化 Replicate
 const replicate = new Replicate({
-  auth: 'process.env.REPLICATE_API_TOKEN',
+  auth: process.env.REPLICATE_API_TOKEN,
 });
 
 // 获取客户端IP地址
@@ -75,7 +75,12 @@ Original Language: ${userInfo.nameLanguage}
 
 Please create a literary Chinese name that harmonizes with the original name pronunciation and is appropriate for the gender.`;
 
-    console.log('Calling Replicate API for AI name generation...');
+    console.log('=== AI Smart Mode - 大模型调用开始 ===');
+    console.log('📤 发送给大模型的用户输入:');
+    console.log(userPrompt);
+    console.log('\n📋 发送给大模型的系统提示词:');
+    console.log(AI_SYSTEM_PROMPT);
+    console.log('\n🚀 调用 Replicate API (openai/o4-mini)...');
     
     let aiResponse = '';
     const stream = await replicate.stream("openai/o4-mini", {
@@ -86,34 +91,47 @@ Please create a literary Chinese name that harmonizes with the original name pro
       }
     });
 
+    console.log('📡 接收流式响应中...');
     for await (const event of stream) {
       aiResponse += event;
     }
 
-    console.log('AI Response:', aiResponse);
+    console.log('\n📥 大模型原始输出:');
+    console.log('---响应开始---');
+    console.log(aiResponse);
+    console.log('---响应结束---');
 
     // 尝试解析JSON响应
+    console.log('\n🔄 解析JSON响应...');
     let parsedResponse;
     try {
       // 提取JSON部分（如果响应包含其他内容）
       const jsonMatch = aiResponse.match(/\{[\s\S]*\}/);
       if (jsonMatch) {
+        console.log('📋 提取到的JSON部分:', jsonMatch[0]);
         parsedResponse = JSON.parse(jsonMatch[0]);
+        console.log('✅ JSON解析成功');
+        console.log('📊 解析后的数据结构:', JSON.stringify(parsedResponse, null, 2));
       } else {
+        console.error('❌ 响应中未找到JSON格式数据');
         throw new Error('No JSON found in AI response');
       }
     } catch (parseError) {
-      console.error('Failed to parse AI response:', parseError);
+      console.error('❌ JSON解析失败:', parseError);
       throw new Error('AI response parsing failed');
     }
 
     if (parsedResponse.success && parsedResponse.data) {
+      console.log('🎯 返回生成的名字数据:', JSON.stringify(parsedResponse.data, null, 2));
+      console.log('=== AI Smart Mode - 大模型调用结束 ===\n');
       return parsedResponse.data;
     } else {
+      console.error('❌ AI响应格式无效:', parsedResponse);
       throw new Error('AI response format invalid');
     }
   } catch (error) {
-    console.error('AI name generation error:', error);
+    console.error('❌ AI名字生成失败:', error);
+    console.log('=== AI Smart Mode - 大模型调用异常结束 ===\n');
     throw new Error('AI name generation failed');
   }
 }
@@ -122,6 +140,7 @@ async function generateChineseName(mode?: string, userInfo?: any) {
   try {
     if (mode === 'smart' && userInfo) {
       // AI Smart模式：调用大模型生成个性化名字
+      console.log('🧠 执行AI Smart模式名字生成');
       const aiGeneratedData = await generateChineseNameWithAI(userInfo);
       
       // 优化返回数据结构，与instant模式保持一致
@@ -164,6 +183,7 @@ async function generateChineseName(mode?: string, userInfo?: any) {
       return optimizedData;
     } else {
       // Instant模式：使用原有生成逻辑
+      console.log('⚡ 执行Instant模式名字生成');
       const generatedName = await nameGenerator.generate();
       
       const nameWithPinyin = {
@@ -235,19 +255,26 @@ export async function GET(req: NextRequest) {
   // 使用IP地址作为用户标识
   const userId = getClientIP(req);
 
+  console.log(`⚡ GET请求 - Instant模式, IP: ${userId}`);
+
   try {
     // 检查用量限制
     const canUse = await checkAndUpdateUsage(userId);
     if (!canUse) {
+      console.log(`❌ 用量限制达到 - IP: ${userId}, 限制: ${FREE_LIMIT}次/天`);
       return NextResponse.json({ 
         success: false, 
         error: `Daily free limit reached (${FREE_LIMIT} times), please try again tomorrow.` 
       }, { status: 429 });
     }
 
+    console.log(`✅ 用量检查通过 - IP: ${userId}`);
+    console.log('⚡ 启动Instant模式');
+
     // 生成名字 (Instant模式)
     const nameWithPinyin = await generateChineseName();
 
+    console.log('🎯 名字生成完成，返回结果');
     return NextResponse.json({
       success: true,
       data: nameWithPinyin
@@ -266,19 +293,31 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     const { mode, firstName, lastName, nameLanguage, birthDate, gender } = body;
 
+    console.log(`🚀 POST请求 - 模式: ${mode}, IP: ${getClientIP(req)}`);
+    console.log('📋 请求参数:', { mode, firstName, lastName, nameLanguage, birthDate, gender });
+
     // 使用IP地址作为用户标识
     const userId = getClientIP(req);
 
     // 检查用量限制
     const canUse = await checkAndUpdateUsage(userId);
     if (!canUse) {
+      console.log(`❌ 用量限制达到 - IP: ${userId}, 限制: ${FREE_LIMIT}次/天`);
       return NextResponse.json({ 
         success: false, 
         error: `Daily free limit reached (${FREE_LIMIT} times), please try again tomorrow.` 
       }, { status: 429 });
     }
 
+    console.log(`✅ 用量检查通过 - IP: ${userId}`);
+
     // 生成名字
+    if (mode === 'smart') {
+      console.log('🧠 启动AI Smart模式');
+    } else {
+      console.log('⚡ 启动Instant模式');
+    }
+
     const nameWithPinyin = await generateChineseName(mode, {
       firstName,
       lastName,
@@ -287,6 +326,7 @@ export async function POST(req: NextRequest) {
       gender
     });
 
+    console.log('🎯 名字生成完成，返回结果');
     return NextResponse.json({
       success: true,
       data: nameWithPinyin
