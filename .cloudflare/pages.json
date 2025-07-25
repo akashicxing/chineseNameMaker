@@ -1,0 +1,20 @@
+{
+  "build": {
+    "command": "npm run build",
+    "output": ".next",
+    "environment": {
+      "NODE_VERSION": "18"
+    }
+  },
+  "routes": [
+    {
+      "pattern": "/static/*",
+      "serve": "static/:splat"
+    },
+    {
+      "pattern": "/*",
+      "serve": "index.html",
+      "rewrite": true
+    }
+  ]
+} 

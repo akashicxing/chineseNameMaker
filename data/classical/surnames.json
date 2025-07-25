@@ -1,0 +1,700 @@
+[
+  {
+    "surname": "赵",
+    "pinyin": "zhào",
+    "rank": 7,
+    "population": "约2670万",
+    "percentage": "2.0%",
+    "regions": ["河北", "山西", "内蒙古"],
+    "famous_people": ["赵匡胤（宋太祖）", "赵云", "赵孟頫"]
+  },
+  {
+    "surname": "钱",
+    "pinyin": "qián",
+    "rank": 96,
+    "population": "约220万",
+    "percentage": "0.16%",
+    "regions": ["江苏", "浙江", "上海"],
+    "famous_people": ["钱学森", "钱钟书", "钱三强"]
+  },
+  {
+    "surname": "孙",
+    "pinyin": "sūn",
+    "rank": 12,
+    "population": "约1800万",
+    "percentage": "1.3%",
+    "regions": ["山东", "江苏", "安徽"],
+    "famous_people": ["孙中山", "孙武", "孙权"]
+  },
+  {
+    "surname": "李",
+    "pinyin": "lǐ",
+    "rank": 2,
+    "population": "约9530万",
+    "percentage": "7.2%",
+    "regions": ["全国广布", "河南", "四川"],
+    "famous_people": ["李世民", "李白", "李清照"]
+  },
+  {
+    "surname": "周",
+    "pinyin": "zhōu",
+    "rank": 10,
+    "population": "约2100万",
+    "percentage": "1.6%",
+    "regions": ["湖南", "湖北", "江西"],
+    "famous_people": ["周恩来", "周瑜", "周敦颐"]
+  },
+  {
+    "surname": "吴",
+    "pinyin": "wú",
+    "rank": 9,
+    "population": "约2400万",
+    "percentage": "1.8%",
+    "regions": ["江苏", "浙江", "福建"],
+    "famous_people": ["吴道子", "吴承恩", "吴敬梓"]
+  },
+  {
+    "surname": "郑",
+    "pinyin": "zhèng",
+    "rank": 21,
+    "population": "约1200万",
+    "percentage": "0.9%",
+    "regions": ["福建", "广东", "浙江"],
+    "famous_people": ["郑成功", "郑板桥", "郑和"]
+  },
+  {
+    "surname": "王",
+    "pinyin": "wáng",
+    "rank": 1,
+    "population": "约9468万",
+    "percentage": "7.1%",
+    "regions": ["北方地区（占9.9%）", "山东", "河南"],
+    "famous_people": ["王羲之", "王安石", "王阳明"]
+  },
+  {
+    "surname": "冯",
+    "pinyin": "féng",
+    "rank": 31,
+    "population": "约810万",
+    "percentage": "0.6%",
+    "regions": ["广东", "广西", "河北"],
+    "famous_people": ["冯梦龙", "冯玉祥", "冯巩"]
+  },
+  {
+    "surname": "陈",
+    "pinyin": "chén",
+    "rank": 5,
+    "population": "约5800万",
+    "percentage": "4.4%",
+    "regions": ["南方地区（占6.8%）", "福建", "台湾"],
+    "famous_people": ["陈独秀", "陈寅恪", "陈景润"]
+  },
+  {
+    "surname": "褚",
+    "pinyin": "chǔ",
+    "rank": 225,
+    "population": "约48万",
+    "percentage": "0.036%",
+    "regions": ["浙江", "江苏", "河南"],
+    "famous_people": ["褚遂良", "褚时健", "褚渊"]
+  },
+  {
+    "surname": "卫",
+    "pinyin": "wèi",
+    "rank": 187,
+    "population": "约68万",
+    "percentage": "0.051%",
+    "regions": ["山西", "陕西", "河北"],
+    "famous_people": ["卫青", "卫玠", "卫立煌"]
+  },
+  {
+    "surname": "蒋",
+    "pinyin": "jiǎng",
+    "rank": 45,
+    "population": "约560万",
+    "percentage": "0.42%",
+    "regions": ["浙江", "湖南", "四川"],
+    "famous_people": ["蒋介石", "蒋百里", "蒋经国"]
+  },
+  {
+    "surname": "沈",
+    "pinyin": "shěn",
+    "rank": 37,
+    "population": "约650万",
+    "percentage": "0.49%",
+    "regions": ["浙江", "江苏", "上海"],
+    "famous_people": ["沈括", "沈从文", "沈钧儒"]
+  },
+  {
+    "surname": "韩",
+    "pinyin": "hán",
+    "rank": 29,
+    "population": "约850万",
+    "percentage": "0.64%",
+    "regions": ["山东", "河南", "河北"],
+    "famous_people": ["韩信", "韩愈", "韩非"]
+  },
+  {
+    "surname": "杨",
+    "pinyin": "yáng",
+    "rank": 6,
+    "population": "约4620万",
+    "percentage": "3.5%",
+    "regions": ["四川", "云南", "贵州"],
+    "famous_people": ["杨振宁", "杨贵妃", "杨绛"]
+  },
+  {
+    "surname": "朱",
+    "pinyin": "zhū",
+    "rank": 14,
+    "population": "约1500万",
+    "percentage": "1.1%",
+    "regions": ["江苏", "安徽", "浙江"],
+    "famous_people": ["朱元璋", "朱熹", "朱自清"]
+  },
+  {
+    "surname": "秦",
+    "pinyin": "qín",
+    "rank": 78,
+    "population": "约320万",
+    "percentage": "0.24%",
+    "regions": ["陕西", "甘肃", "四川"],
+    "famous_people": ["秦始皇", "秦观", "秦琼"]
+  },
+  {
+    "surname": "尤",
+    "pinyin": "yóu",
+    "rank": 194,
+    "population": "约62万",
+    "percentage": "0.047%",
+    "regions": ["福建", "台湾", "广东"],
+    "famous_people": ["尤袤", "尤侗", "尤小刚"]
+  },
+  {
+    "surname": "许",
+    "pinyin": "xǔ",
+    "rank": 35,
+    "population": "约700万",
+    "percentage": "0.53%",
+    "regions": ["广东", "福建", "台湾"],
+    "famous_people": ["许慎", "许地山", "许光达"]
+  },
+  {
+    "surname": "何",
+    "pinyin": "hé",
+    "rank": 18,
+    "population": "约1300万",
+    "percentage": "0.98%",
+    "regions": ["广东", "四川", "湖南"],
+    "famous_people": ["何香凝", "何应钦", "何炅"]
+  },
+  {
+    "surname": "吕",
+    "pinyin": "lǚ",
+    "rank": 43,
+    "population": "约570万",
+    "percentage": "0.43%",
+    "regions": ["山东", "河南", "河北"],
+    "famous_people": ["吕布", "吕不韦", "吕思勉"]
+  },
+  {
+    "surname": "施",
+    "pinyin": "shī",
+    "rank": 105,
+    "population": "约210万",
+    "percentage": "0.16%",
+    "regions": ["江苏", "浙江", "福建"],
+    "famous_people": ["施耐庵", "施琅", "施一公"]
+  },
+  {
+    "surname": "张",
+    "pinyin": "zhāng",
+    "rank": 3,
+    "population": "约8750万",
+    "percentage": "6.6%",
+    "regions": ["北方地区（占8.2%）", "河南", "山东"],
+    "famous_people": ["张衡", "张仲景", "张学良"]
+  },
+  {
+    "surname": "孔",
+    "pinyin": "kǒng",
+    "rank": 97,
+    "population": "约220万",
+    "percentage": "0.17%",
+    "regions": ["山东（占60%）", "江苏", "河北"],
+    "famous_people": ["孔子", "孔祥熙", "孔融"]
+  },
+  {
+    "surname": "曹",
+    "pinyin": "cáo",
+    "rank": 32,
+    "population": "约790万",
+    "percentage": "0.6%",
+    "regions": ["河南", "安徽", "山东"],
+    "famous_people": ["曹操", "曹雪芹", "曹禺"]
+  },
+  {
+    "surname": "严",
+    "pinyin": "yán",
+    "rank": 94,
+    "population": "约230万",
+    "percentage": "0.17%",
+    "regions": ["湖北", "江苏", "浙江"],
+    "famous_people": ["严复", "严嵩", "严凤英"]
+  },
+  {
+    "surname": "华",
+    "pinyin": "huà",
+    "rank": 196,
+    "population": "约61万",
+    "percentage": "0.046%",
+    "regions": ["江苏", "浙江", "上海"],
+    "famous_people": ["华佗", "华罗庚", "华君武"]
+  },
+  {
+    "surname": "金",
+    "pinyin": "jīn",
+    "rank": 69,
+    "population": "约380万",
+    "percentage": "0.29%",
+    "regions": ["浙江", "江苏", "安徽"],
+    "famous_people": ["金庸", "金圣叹", "金岳霖"]
+  },
+  {
+    "surname": "魏",
+    "pinyin": "wèi",
+    "rank": 44,
+    "population": "约560万",
+    "percentage": "0.42%",
+    "regions": ["河南", "河北", "陕西"],
+    "famous_people": ["魏征", "魏源", "魏巍"]
+  },
+  {
+    "surname": "陶",
+    "pinyin": "táo",
+    "rank": 102,
+    "population": "约215万",
+    "percentage": "0.16%",
+    "regions": ["江苏", "浙江", "湖南"],
+    "famous_people": ["陶渊明", "陶行知", "陶喆"]
+  },
+  {
+    "surname": "姜",
+    "pinyin": "jiāng",
+    "rank": 60,
+    "population": "约420万",
+    "percentage": "0.32%",
+    "regions": ["山东", "辽宁", "黑龙江"],
+    "famous_people": ["姜子牙", "姜维", "姜文"]
+  },
+  {
+    "surname": "戚",
+    "pinyin": "qī",
+    "rank": 206,
+    "population": "约56万",
+    "percentage": "0.042%",
+    "regions": ["浙江", "山东", "江苏"],
+    "famous_people": ["戚继光", "戚薇", "戚本禹"]
+  },
+  {
+    "surname": "谢",
+    "pinyin": "xiè",
+    "rank": 24,
+    "population": "约1000万",
+    "percentage": "0.75%",
+    "regions": ["广东", "江西", "福建"],
+    "famous_people": ["谢安", "谢灵运", "谢霆锋"]
+  },
+  {
+    "surname": "邹",
+    "pinyin": "zōu",
+    "rank": 70,
+    "population": "约370万",
+    "percentage": "0.28%",
+    "regions": ["江西", "湖北", "湖南"],
+    "famous_people": ["邹容", "邹韬奋", "邹市明"]
+  },
+  {
+    "surname": "喻",
+    "pinyin": "yù",
+    "rank": 247,
+    "population": "约42万",
+    "percentage": "0.032%",
+    "regions": ["湖南", "湖北", "四川"],
+    "famous_people": ["喻嘉言", "喻继高", "喻恩泰"]
+  },
+  {
+    "surname": "柏",
+    "pinyin": "bǎi",
+    "rank": 217,
+    "population": "约53万",
+    "percentage": "0.04%",
+    "regions": ["四川", "重庆", "湖南"],
+    "famous_people": ["柏文蔚", "柏杨", "柏栩栩"]
+  },
+  {
+    "surname": "水",
+    "pinyin": "shuǐ",
+    "rank": 385,
+    "population": "约18万",
+    "percentage": "0.014%",
+    "regions": ["浙江", "江苏", "上海"],
+    "famous_people": ["水均益", "水神共工（神话）", "水华"]
+  },
+  {
+    "surname": "窦",
+    "pinyin": "dòu",
+    "rank": 249,
+    "population": "约41万",
+    "percentage": "0.031%",
+    "regions": ["河北", "山东", "河南"],
+    "famous_people": ["窦婴", "窦娥（文学形象）", "窦唯"]
+  },
+  {
+    "surname": "章",
+    "pinyin": "zhāng",
+    "rank": 118,
+    "population": "约180万",
+    "percentage": "0.14%",
+    "regions": ["浙江", "福建", "安徽"],
+    "famous_people": ["章太炎", "章子怡", "章学诚"]
+  },
+  {
+    "surname": "云",
+    "pinyin": "yún",
+    "rank": 276,
+    "population": "约36万",
+    "percentage": "0.027%",
+    "regions": ["广东", "广西", "台湾"],
+    "famous_people": ["云莺（唐代女将）", "云大棉（香港企业家）", "云飞（歌手）"]
+  },
+  {
+    "surname": "苏",
+    "pinyin": "sū",
+    "rank": 41,
+    "population": "约580万",
+    "percentage": "0.44%",
+    "regions": ["广东", "福建", "台湾"],
+    "famous_people": ["苏轼", "苏步青", "苏炳添"]
+  },
+  {
+    "surname": "潘",
+    "pinyin": "pān",
+    "rank": 36,
+    "population": "约680万",
+    "percentage": "0.51%",
+    "regions": ["广东", "广西", "浙江"],
+    "famous_people": ["潘安", "潘天寿", "潘基文"]
+  },
+  {
+    "surname": "葛",
+    "pinyin": "gě",
+    "rank": 120,
+    "population": "约175万",
+    "percentage": "0.13%",
+    "regions": ["江苏", "安徽", "山东"],
+    "famous_people": ["葛洪", "葛优", "葛剑雄"]
+  },
+  {
+    "surname": "奚",
+    "pinyin": "xī",
+    "rank": 228,
+    "population": "约47万",
+    "percentage": "0.035%",
+    "regions": ["江苏", "浙江", "上海"],
+    "famous_people": ["奚仲（夏朝车正）", "奚美娟", "奚梦瑶"]
+  },
+  {
+    "surname": "范",
+    "pinyin": "fàn",
+    "rank": 51,
+    "population": "约480万",
+    "percentage": "0.36%",
+    "regions": ["河南", "山东", "河北"],
+    "famous_people": ["范仲淹", "范冰冰", "范文澜"]
+  },
+  {
+    "surname": "彭",
+    "pinyin": "péng",
+    "rank": 39,
+    "population": "约620万",
+    "percentage": "0.47%",
+    "regions": ["湖南", "四川", "湖北"],
+    "famous_people": ["彭德怀", "彭丽媛", "彭桓武"]
+  },
+  {
+    "surname": "郎",
+    "pinyin": "láng",
+    "rank": 233,
+    "population": "约45万",
+    "percentage": "0.034%",
+    "regions": ["浙江", "辽宁", "吉林"],
+    "famous_people": ["郎平", "郎咸平", "郎朗"]
+  },
+  {
+    "surname": "鲁",
+    "pinyin": "lǔ",
+    "rank": 119,
+    "population": "约178万",
+    "percentage": "0.13%",
+    "regions": ["山东", "安徽", "河南"],
+    "famous_people": ["鲁班", "鲁迅（笔名）", "鲁肃"]
+  },
+  {
+    "surname": "韦",
+    "pinyin": "wéi",
+    "rank": 68,
+    "population": "约390万",
+    "percentage": "0.29%",
+    "regions": ["广西（占60%）", "广东", "贵州"],
+    "famous_people": ["韦应物", "韦拔群", "韦唯"]
+  },
+  {
+    "surname": "昌",
+    "pinyin": "chāng",
+    "rank": 278,
+    "population": "约35万",
+    "percentage": "0.026%",
+    "regions": ["江西", "湖南", "湖北"],
+    "famous_people": ["昌义之（南朝将领）", "昌绍先（烈士）", "昌西·比卢普斯（NBA球员）"]
+  },
+  {
+    "surname": "马",
+    "pinyin": "mǎ",
+    "rank": 13,
+    "population": "约1550万",
+    "percentage": "1.17%",
+    "regions": ["西北地区（占18%）", "河南", "河北"],
+    "famous_people": ["马超", "马三立", "马云"]
+  },
+  {
+    "surname": "苗",
+    "pinyin": "miáo",
+    "rank": 146,
+    "population": "约140万",
+    "percentage": "0.11%",
+    "regions": ["山东", "河南", "山西"],
+    "famous_people": ["苗可秀（抗日英雄）", "苗侨伟", "苗阜"]
+  },
+  {
+    "surname": "凤",
+    "pinyin": "fèng",
+    "rank": 308,
+    "population": "约30万",
+    "percentage": "0.023%",
+    "regions": ["湖南", "湖北", "安徽"],
+    "famous_people": ["凤雏（庞统）", "凤飞飞", "凤凰传奇（组合）"]
+  },
+  {
+    "surname": "花",
+    "pinyin": "huā",
+    "rank": 257,
+    "population": "约40万",
+    "percentage": "0.03%",
+    "regions": ["江苏", "上海", "浙江"],
+    "famous_people": ["花木兰", "花荣（水浒人物）", "花千芳（作家）"]
+  },
+  {
+    "surname": "方",
+    "pinyin": "fāng",
+    "rank": 63,
+    "population": "约410万",
+    "percentage": "0.31%",
+    "regions": ["安徽", "浙江", "福建"],
+    "famous_people": ["方志敏", "方文山", "方孝孺"]
+  },
+  {
+    "surname": "俞",
+    "pinyin": "yú",
+    "rank": 134,
+    "population": "约150万",
+    "percentage": "0.11%",
+    "regions": ["浙江", "江苏", "上海"],
+    "famous_people": ["俞大猷", "俞敏洪", "俞飞鸿"]
+  },
+  {
+    "surname": "任",
+    "pinyin": "rèn",
+    "rank": 59,
+    "population": "约430万",
+    "percentage": "0.32%",
+    "regions": ["山西", "陕西", "山东"],
+    "famous_people": ["任弼时", "任正非", "任贤齐"]
+  },
+  {
+    "surname": "袁",
+    "pinyin": "yuán",
+    "rank": 33,
+    "population": "约780万",
+    "percentage": "0.59%",
+    "regions": ["河南", "四川", "河北"],
+    "famous_people": ["袁世凯", "袁隆平", "袁崇焕"]
+  },
+  {
+    "surname": "柳",
+    "pinyin": "liǔ",
+    "rank": 130,
+    "population": "约160万",
+    "percentage": "0.12%",
+    "regions": ["山东", "河南", "安徽"],
+    "famous_people": ["柳宗元", "柳传志", "柳岩"]
+  },
+  {
+    "surname": "酆",
+    "pinyin": "fēng",
+    "rank": 512,
+    "population": "约8万",
+    "percentage": "0.006%",
+    "regions": ["湖南", "重庆", "四川"],
+    "famous_people": ["酆道元（北魏地理学家酈道元族弟）", "酆云鹤（纺织专家）", "酆姓多集中于湘西土家族地区"]
+  },
+  {
+    "surname": "鲍",
+    "pinyin": "bào",
+    "rank": 173,
+    "population": "约85万",
+    "percentage": "0.064%",
+    "regions": ["山东", "江苏", "浙江"],
+    "famous_people": ["鲍叔牙", "鲍威尔（美国前国务卿中文名）", "鲍春来"]
+  },
+  {
+    "surname": "史",
+    "pinyin": "shǐ",
+    "rank": 85,
+    "population": "约270万",
+    "percentage": "0.2%",
+    "regions": ["河北", "河南", "山东"],
+    "famous_people": ["史可法", "司马迁", "史铁生"]
+  },
+  {
+    "surname": "唐",
+    "pinyin": "táng",
+    "rank": 26,
+    "population": "约950万",
+    "percentage": "0.72%",
+    "regions": ["湖南", "四川", "广东"],
+    "famous_people": ["唐太宗", "唐寅", "唐嫣"]
+  },
+  {
+    "surname": "费",
+    "pinyin": "fèi",
+    "rank": 199,
+    "population": "约60万",
+    "percentage": "0.045%",
+    "regions": ["江苏", "浙江", "上海"],
+    "famous_people": ["费孝通", "费玉清", "费德勒（中文译名）"]
+  },
+  {
+    "surname": "廉",
+    "pinyin": "lián",
+    "rank": 290,
+    "population": "约33万",
+    "percentage": "0.025%",
+    "regions": ["山西", "陕西", "河北"],
+    "famous_people": ["廉颇", "廉希宪", "廉政（当代书法家）"]
+  },
+  {
+    "surname": "岑",
+    "pinyin": "cén",
+    "rank": 235,
+    "population": "约45万",
+    "percentage": "0.034%",
+    "regions": ["广西", "广东", "浙江"],
+    "famous_people": ["岑参", "岑春煊", "岑建勋"]
+  },
+  {
+    "surname": "薛",
+    "pinyin": "xuē",
+    "rank": 76,
+    "population": "约310万",
+    "percentage": "0.23%",
+    "regions": ["山西", "江苏", "陕西"],
+    "famous_people": ["薛仁贵", "薛定谔（中文译名）", "薛之谦"]
+  },
+  {
+    "surname": "雷",
+    "pinyin": "léi",
+    "rank": 78,
+    "population": "约300万",
+    "percentage": "0.23%",
+    "regions": ["四川", "陕西", "湖北"],
+    "famous_people": ["雷锋", "雷军", "雷佳音"]
+  },
+  {
+    "surname": "贺",
+    "pinyin": "hè",
+    "rank": 93,
+    "population": "约240万",
+    "percentage": "0.18%",
+    "regions": ["湖南", "湖北", "陕西"],
+    "famous_people": ["贺龙", "贺知章", "贺聪（超模）"]
+  },
+  {
+    "surname": "倪",
+    "pinyin": "ní",
+    "rank": 111,
+    "population": "约190万",
+    "percentage": "0.14%",
+    "regions": ["江苏", "浙江", "安徽"],
+    "famous_people": ["倪瓒", "倪萍", "倪大红"]
+  },
+  {
+    "surname": "汤",
+    "pinyin": "tāng",
+    "rank": 90,
+    "population": "约250万",
+    "percentage": "0.19%",
+    "regions": ["江苏", "湖南", "湖北"],
+    "famous_people": ["汤显祖", "汤恩伯", "汤唯"]
+  },
+  {
+    "surname": "滕",
+    "pinyin": "téng",
+    "rank": 179,
+    "population": "约80万",
+    "percentage": "0.06%",
+    "regions": ["山东", "辽宁", "江苏"],
+    "famous_people": ["滕代远", "滕丽名", "滕华涛"]
+  },
+  {
+    "surname": "殷",
+    "pinyin": "yīn",
+    "rank": 104,
+    "population": "约215万",
+    "percentage": "0.16%",
+    "regions": ["山东", "安徽", "江苏"],
+    "famous_people": ["殷商王室", "殷桃", "殷承宗"]
+  },
+  {
+    "surname": "罗",
+    "pinyin": "luó",
+    "rank": 20,
+    "population": "约1200万",
+    "percentage": "0.9%",
+    "regions": ["四川", "湖南", "广东"],
+    "famous_people": ["罗贯中", "罗荣桓", "罗大佑"]
+  },
+  {
+    "surname": "毕",
+    "pinyin": "bì",
+    "rank": 125,
+    "population": "约170万",
+    "percentage": "0.13%",
+    "regions": ["山东", "河南", "河北"],
+    "famous_people": ["毕昇", "毕福剑", "毕加索（中文译名）"]
+  },
+  {
+    "surname": "黄",
+    "pinyin": "huáng",
+    "rank": 7,
+    "population": "约2870万",
+    "percentage": "2.1%",
+    "regions": ["广东", "广西", "福建"],
+    "famous_people": ["黄庭坚", "黄兴", "黄飞鸿"]
+  }
+]
+  
+
+
+  
+ 

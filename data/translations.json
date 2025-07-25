@@ -1,0 +1,34 @@
+{
+  "dynasties": {
+    "先秦": "Pre-Qin",
+    "秦": "Qin Dynasty",
+    "汉": "Han Dynasty",
+    "三国": "Three Kingdoms",
+    "晋": "Jin Dynasty",
+    "南北朝": "Northern and Southern Dynasties",
+    "隋": "Sui Dynasty",
+    "唐": "Tang Dynasty",
+    "宋": "Song Dynasty",
+    "元": "Yuan Dynasty",
+    "明": "Ming Dynasty",
+    "清": "Qing Dynasty"
+  },
+  "books": {
+    "楚辞": "Songs of Chu",
+    "诗经": "Book of Songs",
+    "乐府": "Yuefu Poetry",
+    "唐诗": "Tang Poetry",
+    "宋词": "Song Lyrics",
+    "古诗": "Ancient Poems",
+    "辞赋": "Rhapsodies"
+  },
+  "common": {
+    "卷": "Volume",
+    "集": "Collection",
+    "选": "Selection",
+    "全集": "Complete Works",
+    "诗集": "Poetry Collection",
+    "词集": "Lyrics Collection",
+    "文集": "Literary Collection"
+  }
+} 
