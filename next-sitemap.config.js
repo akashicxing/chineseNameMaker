@@ -89,9 +89,10 @@ allPaths.push({
 module.exports = {
   siteUrl: 'https://chinesenamegenerator.online',
   generateRobotsTxt: true,
+  generateIndexSitemap: false, // 禁用索引文件，直接生成单个sitemap.xml
   changefreq: 'weekly',
   priority: 0.7,
-  sitemapSize: 5000,
+  sitemapSize: 10000, // 增大限制确保所有URL在一个文件中
   
   // 排除路径
   exclude: [
