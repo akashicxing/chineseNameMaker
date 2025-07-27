@@ -63,26 +63,23 @@ export default function Header() {
         </Link>
 
         <nav className="hidden md:flex space-x-8 text-sm">
-          <Link href={`/${language}/features`} className="text-gray-700 hover:text-red-600 dark:text-gray-300 dark:hover:text-red-400 transition-colors">
-            {t.nav.features}
+          <Link href={`/${language}/`} className="text-gray-700 hover:text-red-600 dark:text-gray-300 dark:hover:text-red-400 transition-colors">
+            Free Chinese Name Generator
           </Link>
           <Link href={`/${language}/how-it-works`} className="text-gray-700 hover:text-red-600 dark:text-gray-300 dark:hover:text-red-400 transition-colors">
-            {t.nav.howItWorks}
+            How It Works
           </Link>
-          <Link href={`/${language}/chinesenamegenerator`} className={cn(
-            "text-gray-700 hover:text-red-600 dark:text-gray-300 dark:hover:text-red-400 transition-colors",
-            pathname === `/${language}/chinesenamegenerator` && "text-red-600 dark:text-red-400"
-          )}>
-            {t.nav.nameGenerator}
+          <Link href={`/${language}/free-chinese-names`} className="text-gray-700 hover:text-red-600 dark:text-gray-300 dark:hover:text-red-400 transition-colors">
+            Free Chinese Names
           </Link>
-          <Link href={`/${language}/testimonials`} className="text-gray-700 hover:text-red-600 dark:text-gray-300 dark:hover:text-red-400 transition-colors">
-            {t.nav.testimonials}
+          <Link href={`/${language}/ai-name-generator`} className="text-gray-700 hover:text-red-600 dark:text-gray-300 dark:hover:text-red-400 transition-colors">
+            AI Name Generator
           </Link>
-          <Link href={`/${language}/faq`} className="text-gray-700 hover:text-red-600 dark:text-gray-300 dark:hover:text-red-400 transition-colors">
-            {t.nav.faq}
+          <Link href={`/${language}/chinese-name-meanings`} className="text-gray-700 hover:text-red-600 dark:text-gray-300 dark:hover:text-red-400 transition-colors">
+            Name Meanings
           </Link>
           <Link href={`/${language}/blog`} className="text-gray-700 hover:text-red-600 dark:text-gray-300 dark:hover:text-red-400 transition-colors">
-            {t.nav.blog}
+            Blog
           </Link>
         </nav>
 
@@ -102,49 +99,46 @@ export default function Header() {
         <div className="md:hidden bg-white dark:bg-gray-900 shadow-lg absolute top-full left-0 right-0 p-4">
           <nav className="flex flex-col space-y-4">
             <Link 
-              href={`/${language}/features`} 
+              href={`/${language}/`} 
               className="text-gray-700 hover:text-red-600 dark:text-gray-300 dark:hover:text-red-400"
               onClick={() => setMobileMenuOpen(false)}
             >
-              {t.nav.features}
+              Free Chinese Name Generator
             </Link>
             <Link 
               href={`/${language}/how-it-works`} 
               className="text-gray-700 hover:text-red-600 dark:text-gray-300 dark:hover:text-red-400"
               onClick={() => setMobileMenuOpen(false)}
             >
-              {t.nav.howItWorks}
+              How It Works
             </Link>
             <Link 
-              href={`/${language}/chinesenamegenerator`} 
-              className={cn(
-                "text-gray-700 hover:text-red-600 dark:text-gray-300 dark:hover:text-red-400",
-                pathname === `/${language}/chinesenamegenerator` && "text-red-600 dark:text-red-400"
-              )}
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              {t.nav.nameGenerator}
-            </Link>
-            <Link 
-              href={`/${language}/testimonials`} 
+              href={`/${language}/free-chinese-names`} 
               className="text-gray-700 hover:text-red-600 dark:text-gray-300 dark:hover:text-red-400"
               onClick={() => setMobileMenuOpen(false)}
             >
-              {t.nav.testimonials}
+              Free Chinese Names
             </Link>
             <Link 
-              href={`/${language}/faq`} 
+              href={`/${language}/ai-name-generator`} 
               className="text-gray-700 hover:text-red-600 dark:text-gray-300 dark:hover:text-red-400"
               onClick={() => setMobileMenuOpen(false)}
             >
-              {t.nav.faq}
+              AI Name Generator
+            </Link>
+            <Link 
+              href={`/${language}/chinese-name-meanings`} 
+              className="text-gray-700 hover:text-red-600 dark:text-gray-300 dark:hover:text-red-400"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Name Meanings
             </Link>
             <Link 
               href={`/${language}/blog`} 
               className="text-gray-700 hover:text-red-600 dark:text-gray-300 dark:hover:text-red-400"
               onClick={() => setMobileMenuOpen(false)}
             >
-              {t.nav.blog}
+              Blog
             </Link>
           </nav>
         </div>

@@ -20,25 +20,47 @@ function getClientIP(req: NextRequest) {
   return req.headers.get('x-real-ip') || 'unknown';
 }
 
-// AI Smart模式的系统提示词（简化版本，避免输出截断）
+// AI Smart模式的系统提示词（基于guild.md优化）
 const AI_SYSTEM_PROMPT = `You are a professional expert in Chinese traditional culture and classical literature, specializing in extracting poetic names from ancient Chinese literary works.
 
 Generate a Chinese name with deep literary heritage based on user information. Requirements:
 1. Extract from classical works (Shijing, Chuci, Tang poetry, Song ci, etc.)
 2. Beautiful meaning, harmonious phonetics, appropriate for gender
 3. Select suitable Chinese surname based on original name pronunciation
+4. Provide authentic literary source with complete sentence
 
-Output ONLY valid JSON in this simplified format:
+Output ONLY valid JSON in this exact format:
 {
   "success": true,
   "data": {
     "name": "Generated name without surname",
-    "surname": "Selected surname",
+    "surname": {
+      "surname": "Selected surname",
+      "pinyin": "Surname pinyin",
+      "rank": 100,
+      "population": "Population description",
+      "percentage": "0.1%",
+      "regions": ["Region1", "Region2"],
+      "famous_people": ["Person1", "Person2"]
+    },
+    "pinyin": {
+      "surname": "Surname pinyin",
+      "givenName": "Given name pinyin"
+    },
     "sentence": "Complete original sentence containing name characters",
+    "content": "",
     "title": "Work title",
     "author": "Author name", 
     "book": "Source text name",
-    "dynasty": "Dynasty"
+    "dynasty": "Dynasty",
+    "englishTranslation": {
+      "sentence": "English translation of sentence",
+      "content": "",
+      "title": "English title",
+      "author": "English author",
+      "book": "English book name",
+      "dynasty": "English dynasty"
+    }
   }
 }`;
 
@@ -60,8 +82,8 @@ Please create a literary Chinese name that harmonizes with the original name pro
     console.log(AI_SYSTEM_PROMPT);
     console.log('\n🚀 调用 Replicate API (openai/o4-mini)...');
     
-    // 使用非流式调用避免响应截断问题
-    const prediction = await replicate.run("openai/o4-mini", {
+    let aiResponse = '';
+    const stream = await replicate.stream("openai/o4-mini", {
       input: {
         prompt: userPrompt,
         system_prompt: AI_SYSTEM_PROMPT,
@@ -69,171 +91,96 @@ Please create a literary Chinese name that harmonizes with the original name pro
       }
     });
 
-    console.log('📡 接收完整响应...');
-    
-    // 将响应数组合并为字符串
-    let aiResponse = '';
-    if (Array.isArray(prediction)) {
-      aiResponse = prediction.join('');
-    } else if (typeof prediction === 'string') {
-      aiResponse = prediction;
-    } else {
-      console.error('❌ 意外的响应格式:', typeof prediction);
-      throw new Error('FALLBACK_TO_INSTANT');
+    console.log('📡 接收流式响应中...');
+    for await (const event of stream) {
+      aiResponse += event;
     }
 
     console.log('\n📥 大模型原始输出:');
     console.log('---响应开始---');
     console.log(aiResponse);
     console.log('---响应结束---');
-    console.log('📏 响应长度:', aiResponse.length, '字符');
 
-    // 改进的JSON提取逻辑
+    // 尝试解析JSON响应
     console.log('\n🔄 解析JSON响应...');
     let parsedResponse;
     try {
-      // 先尝试直接解析
-      try {
-        parsedResponse = JSON.parse(aiResponse);
-        console.log('✅ 直接JSON解析成功');
-      } catch {
-        // 如果直接解析失败，尝试提取JSON部分
-        console.log('🔍 尝试提取JSON部分...');
-        
-        // 寻找最外层的大括号
-        let firstBrace = aiResponse.indexOf('{');
-        let lastBrace = aiResponse.lastIndexOf('}');
-        
-        if (firstBrace !== -1 && lastBrace !== -1 && lastBrace > firstBrace) {
-          const jsonString = aiResponse.substring(firstBrace, lastBrace + 1);
-          console.log('📋 提取到的JSON部分 (长度:', jsonString.length, ')');
-          
-          parsedResponse = JSON.parse(jsonString);
-          console.log('✅ 提取后JSON解析成功');
-        } else {
-          console.error('❌ 响应中未找到完整的JSON格式数据');
-          throw new Error('FALLBACK_TO_INSTANT');
-        }
+      // 提取JSON部分（如果响应包含其他内容）
+      const jsonMatch = aiResponse.match(/\{[\s\S]*\}/);
+      if (jsonMatch) {
+        console.log('📋 提取到的JSON部分:', jsonMatch[0]);
+        parsedResponse = JSON.parse(jsonMatch[0]);
+        console.log('✅ JSON解析成功');
+        console.log('📊 解析后的数据结构:', JSON.stringify(parsedResponse, null, 2));
+      } else {
+        console.error('❌ 响应中未找到JSON格式数据');
+        throw new Error('No JSON found in AI response');
       }
-      
-      // 防御性检查：验证必需字段是否存在
-      if (!parsedResponse || !parsedResponse.success || !parsedResponse.data) {
-        console.error('❌ 响应格式无效，缺少基本结构');
-        throw new Error('FALLBACK_TO_INSTANT');
-      }
-
-      const data = parsedResponse.data;
-      if (!data.name || !data.surname) {
-        console.error('❌ 响应缺少必需字段 name 或 surname');
-        throw new Error('FALLBACK_TO_INSTANT');
-      }
-
-      console.log('✅ 数据验证通过，包含字段:', Object.keys(data));
-      
     } catch (parseError) {
       console.error('❌ JSON解析失败:', parseError);
-      console.log('📝 响应内容预览:', aiResponse.substring(0, 500));
-      throw new Error('FALLBACK_TO_INSTANT');
+      throw new Error('AI response parsing failed');
     }
 
-    console.log('🎯 返回生成的名字数据');
-    console.log('=== AI Smart Mode - 大模型调用结束 ===\n');
-    return parsedResponse.data;
-    
-  } catch (error: any) {
+    if (parsedResponse.success && parsedResponse.data) {
+      console.log('🎯 返回生成的名字数据:', JSON.stringify(parsedResponse.data, null, 2));
+      console.log('=== AI Smart Mode - 大模型调用结束 ===\n');
+      return parsedResponse.data;
+    } else {
+      console.error('❌ AI响应格式无效:', parsedResponse);
+      throw new Error('AI response format invalid');
+    }
+  } catch (error) {
     console.error('❌ AI名字生成失败:', error);
     console.log('=== AI Smart Mode - 大模型调用异常结束 ===\n');
-    
-    // 检查是否需要降级处理
-    if (error.message === 'FALLBACK_TO_INSTANT') {
-      console.log('🔄 降级使用Instant模式...');
-      throw error; // 重新抛出用于上层降级处理
-    }
-    
-    throw new Error('FALLBACK_TO_INSTANT');
+    throw new Error('AI name generation failed');
   }
 }
 
-async function generateChineseName(mode?: string, userInfo?: any): Promise<any> {
+async function generateChineseName(mode?: string, userInfo?: any) {
   try {
     if (mode === 'smart' && userInfo) {
       // AI Smart模式：调用大模型生成个性化名字
       console.log('🧠 执行AI Smart模式名字生成');
+      const aiGeneratedData = await generateChineseNameWithAI(userInfo);
       
-      try {
-        const aiGeneratedData = await generateChineseNameWithAI(userInfo);
+      // 优化返回数据结构，与instant模式保持一致
+      const optimizedData = {
+        // 基本名字信息
+        name: aiGeneratedData.name,
+        fullName: `${aiGeneratedData.surname.surname}${aiGeneratedData.name}`,
+        surname: aiGeneratedData.surname,
         
-        // 防御性编程：处理简化的JSON结构
-        const safeName = aiGeneratedData.name || '雅名';
-        const safeSurname = aiGeneratedData.surname || '李';
-        const safeSentence = aiGeneratedData.sentence || '文雅之名';
-        const safeTitle = aiGeneratedData.title || '古典文献';
-        const safeAuthor = aiGeneratedData.author || '古代文人';
-        const safeDynasty = aiGeneratedData.dynasty || '古代';
-        const safeBook = aiGeneratedData.book || '经典文献';
+        // 拼音信息
+        pinyin: {
+          surname: aiGeneratedData.surname.pinyin,
+          givenName: aiGeneratedData.pinyin.givenName,
+          fullName: `${aiGeneratedData.surname.pinyin} ${aiGeneratedData.pinyin.givenName}`
+        },
         
-        console.log('✅ AI数据安全处理完成:', { safeName, safeSurname, safeSentence });
+        // 中文原文信息
+        chineseContent: {
+          sentence: aiGeneratedData.sentence,
+          book: aiGeneratedData.book,
+          title: aiGeneratedData.title,
+          author: aiGeneratedData.author,
+          dynasty: aiGeneratedData.dynasty,
+          fullContent: aiGeneratedData.content || '',
+          meaning: `名字"${aiGeneratedData.name}"取自${aiGeneratedData.dynasty}时期${aiGeneratedData.author}所作《${aiGeneratedData.title}》中的"${aiGeneratedData.sentence}"，寓意深远，文化底蕴深厚。`
+        },
         
-        // 优化返回数据结构，与instant模式保持一致
-        const optimizedData = {
-          // 基本名字信息
-          name: safeName,
-          fullName: `${safeSurname}${safeName}`,
-          surname: {
-            surname: safeSurname,
-            pinyin: await toPinyin(safeSurname),
-            rank: 50,
-            population: "AI Generated",
-            percentage: "AI",
-            regions: ["全国"],
-            famous_people: ["AI智能生成"]
-          },
-          
-          // 拼音信息
-          pinyin: {
-            surname: await toPinyin(safeSurname),
-            givenName: await toPinyin(safeName),
-            fullName: `${await toPinyin(safeSurname)} ${await toPinyin(safeName)}`
-          },
-          
-          // 中文原文信息
-          chineseContent: {
-            sentence: safeSentence,
-            book: safeBook,
-            title: safeTitle,
-            author: safeAuthor,
-            dynasty: safeDynasty,
-            fullContent: safeSentence,
-            meaning: `名字"${safeName}"取自${safeDynasty}时期${safeAuthor}所作《${safeTitle}》中的"${safeSentence}"，寓意深远，文化底蕴深厚。`
-          },
-          
-          // 英文翻译信息（使用翻译函数）
-          englishTranslation: {
-            sentence: await translateText(safeSentence),
-            book: translateBook(safeBook),
-            title: await translateText(safeTitle),
-            author: translateAuthor(safeAuthor),
-            dynasty: translateDynasty(safeDynasty),
-            fullContent: await translateText(safeSentence),
-            meaning: `The name "${safeName}" is derived from "${await translateText(safeSentence)}" in "${await translateText(safeTitle)}" by ${translateAuthor(safeAuthor)} during the ${translateDynasty(safeDynasty)} period, carrying profound meaning and rich cultural heritage.`
-          }
-        };
-
-        console.log('🎯 AI Smart模式数据构建完成');
-        return optimizedData;
-        
-      } catch (error: any) {
-        console.error('❌ AI Smart模式失败:', error);
-        
-        // 降级机制：如果AI失败，使用Instant模式
-        if (error.message === 'FALLBACK_TO_INSTANT') {
-          console.log('🔄 降级使用Instant模式...');
-          // 不传递mode参数，使用instant模式
-          return await generateChineseName();
-        } else {
-          throw error;
+        // 英文翻译信息
+        englishTranslation: {
+          sentence: aiGeneratedData.englishTranslation.sentence,
+          book: aiGeneratedData.englishTranslation.book,
+          title: aiGeneratedData.englishTranslation.title,
+          author: aiGeneratedData.englishTranslation.author,
+          dynasty: aiGeneratedData.englishTranslation.dynasty,
+          fullContent: aiGeneratedData.englishTranslation.content || '',
+          meaning: `The name "${aiGeneratedData.name}" is derived from "${aiGeneratedData.englishTranslation.sentence}" in "${aiGeneratedData.englishTranslation.title}" by ${aiGeneratedData.englishTranslation.author} during the ${aiGeneratedData.englishTranslation.dynasty} period, carrying profound meaning and rich cultural heritage.`
         }
-      }
+      };
+      
+      return optimizedData;
     } else {
       // Instant模式：使用原有生成逻辑
       console.log('⚡ 执行Instant模式名字生成');
@@ -277,7 +224,7 @@ async function generateChineseName(mode?: string, userInfo?: any): Promise<any> 
 
       return nameWithPinyin;
     }
-  } catch (error: any) {
+  } catch (error) {
     throw new Error('Error generating name');
   }
 }
@@ -332,7 +279,7 @@ export async function GET(req: NextRequest) {
       success: true,
       data: nameWithPinyin
     });
-  } catch (error: any) {
+  } catch (error) {
     console.error('Error generating name:', error);
     return NextResponse.json(
       { success: false, error: 'Error generating name, please try again later' },
@@ -384,7 +331,7 @@ export async function POST(req: NextRequest) {
       success: true,
       data: nameWithPinyin
     });
-  } catch (error: any) {
+  } catch (error) {
     console.error('Error generating name:', error);
     return NextResponse.json(
       { success: false, error: 'Error generating name, please try again later' },

@@ -157,20 +157,51 @@ export default function Hero({ t: tProp }: { t?: any }) {
             isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           )}>
             <div className="flex flex-wrap justify-center items-baseline gap-x-4">
-              <span>{t.hero.title.part1}</span>
-              <span className="text-red-600 dark:text-red-400">{t.hero.title.part2}</span>
+              <span>Free AI Smart</span>
+              <span className="text-red-600 dark:text-red-400">Chinese Name Generator</span>
             </div>
             <div className="text-3xl md:text-4xl lg:text-5xl text-gray-700 dark:text-gray-300 font-medium">
-              {t.hero.title.subtitle}
+              Create Authentic Chinese Names Online
             </div>
           </h1>
           
           <p className={cn(
-            "text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto transition-all duration-1000 delay-200",
+            "text-xl text-gray-600 dark:text-gray-300 mb-6 max-w-2xl mx-auto transition-all duration-1000 delay-200",
             isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           )}>
-            {t.hero.description}
+            Free AI-powered Chinese name generator online. Create authentic Chinese names instantly with meanings, pronunciation guide. Smart algorithm, no registration required.
           </p>
+
+          {/* SEO优化的特性列表 */}
+          <div className={cn(
+            "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto mb-8 transition-all duration-1000 delay-300",
+            isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          )}>
+            <div className="flex items-center gap-3 bg-white/80 dark:bg-gray-800/80 backdrop-blur-md px-4 py-3 rounded-lg shadow-sm">
+              <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+              <span className="text-sm font-medium text-gray-800 dark:text-gray-200">100% Free - No hidden costs</span>
+            </div>
+            <div className="flex items-center gap-3 bg-white/80 dark:bg-gray-800/80 backdrop-blur-md px-4 py-3 rounded-lg shadow-sm">
+              <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+              <span className="text-sm font-medium text-gray-800 dark:text-gray-200">AI Smart Technology - Advanced algorithms</span>
+            </div>
+            <div className="flex items-center gap-3 bg-white/80 dark:bg-gray-800/80 backdrop-blur-md px-4 py-3 rounded-lg shadow-sm">
+              <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+              <span className="text-sm font-medium text-gray-800 dark:text-gray-200">Instant Results - Generate names in seconds</span>
+            </div>
+            <div className="flex items-center gap-3 bg-white/80 dark:bg-gray-800/80 backdrop-blur-md px-4 py-3 rounded-lg shadow-sm">
+              <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+              <span className="text-sm font-medium text-gray-800 dark:text-gray-200">Cultural Authenticity - Based on 5,000 years tradition</span>
+            </div>
+            <div className="flex items-center gap-3 bg-white/80 dark:bg-gray-800/80 backdrop-blur-md px-4 py-3 rounded-lg shadow-sm">
+              <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+              <span className="text-sm font-medium text-gray-800 dark:text-gray-200">No Registration - Start generating immediately</span>
+            </div>
+            <div className="flex items-center gap-3 bg-white/80 dark:bg-gray-800/80 backdrop-blur-md px-4 py-3 rounded-lg shadow-sm">
+              <div className="w-2 h-2 bg-teal-500 rounded-full"></div>
+              <span className="text-sm font-medium text-gray-800 dark:text-gray-200">Pronunciation Guide - Learn correct sounds</span>
+            </div>
+          </div>
 
           <div className={cn(
             "max-w-2xl mx-auto transition-all duration-1000 delay-300",
