@@ -72,7 +72,7 @@ export default function Header() {
           <Link href={`/${language}/free-chinese-names`} className="text-gray-700 hover:text-red-600 dark:text-gray-300 dark:hover:text-red-400 transition-colors">
             Free Chinese Names
           </Link>
-          <Link href={`/${language}/generator-nama-china`} className="text-gray-700 hover:text-red-600 dark:text-gray-300 dark:hover:text-red-400 transition-colors">
+          <Link href={`/${language}/generatornamachina`} className="text-gray-700 hover:text-red-600 dark:text-gray-300 dark:hover:text-red-400 transition-colors">
             Generator Nama China
           </Link>
           <Link href={`/${language}/ai-name-generator`} className="text-gray-700 hover:text-red-600 dark:text-gray-300 dark:hover:text-red-400 transition-colors">
@@ -123,7 +123,7 @@ export default function Header() {
               Free Chinese Names
             </Link>
             <Link 
-              href={`/${language}/generator-nama-china`} 
+              href={`/${language}/generatornamachina`} 
               className="text-gray-700 hover:text-red-600 dark:text-gray-300 dark:hover:text-red-400"
               onClick={() => setMobileMenuOpen(false)}
             >
