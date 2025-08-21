@@ -15,6 +15,14 @@ const localeMap = { en, zh, fr, de, ar, tr, pt } as const;
 // Blog articles data
 const blogPosts = [
   {
+    id: 'generator-nama-china-indonesia',
+    title: 'Generator Nama China: Panduan Lengkap untuk Orang Indonesia',
+    excerpt: 'Temukan generator nama China terbaik untuk orang Indonesia. Perbandingan lengkap alat pembuat nama China, tips memilih nama yang tepat, dan rekomendasi platform terpercaya.',
+    image: '/images/blog/indonesia/generator-nama-china.png',
+    date: '2025-01-15',
+    category: 'Indonesian Guide'
+  },
+  {
     id: 'gamertaggenerator',
     title: 'Gamertag Generator: The Art of Visual Identity in Names',
     excerpt: 'Explore how typography and colors enhance the beauty and meaning of Chinese names, from traditional calligraphy to modern design.',

@@ -12,6 +12,11 @@ const staticPages = fs.readdirSync(appLangDir).filter(f => fs.statSync(path.join
 // 博客文章slug列表 - SEO优化版本
 const blogArticles = [
   {
+    slug: 'generator-nama-china-indonesia',
+    priority: 0.9, // 高优先级针对印尼市场
+    changefreq: 'weekly' // 更频繁更新
+  },
+  {
     slug: 'chinese-names-for-boys',
     priority: 0.8,
     changefreq: 'monthly'
@@ -22,7 +27,7 @@ const blogArticles = [
     changefreq: 'monthly'
   },
   {
-    slug: 'pronunciation',
+    slug: 'chinese-name-pronunciation',
     priority: 0.7,
     changefreq: 'monthly'
   },
