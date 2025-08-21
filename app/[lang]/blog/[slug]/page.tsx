@@ -867,12 +867,14 @@ export default function BlogArticlePage({
             </p>
 
             {/* Featured Image */}
-            <div className="relative h-64 md:h-96 mb-8 rounded-lg overflow-hidden">
+            <div className="mb-8 rounded-lg overflow-hidden">
               <Image
                 src={article.image}
                 alt={article.title}
-                fill
-                className="object-cover"
+                width={800}
+                height={400}
+                className="w-full h-64 md:h-96 object-cover"
+                priority
               />
             </div>
           </div>
@@ -908,12 +910,13 @@ export default function BlogArticlePage({
                     href={`/${params.lang}/blog/${slug}`}
                     className="bg-white dark:bg-gray-700 rounded-lg p-6 hover:shadow-lg transition-shadow"
                   >
-                    <div className="relative h-32 mb-4 rounded overflow-hidden">
+                    <div className="mb-4 rounded overflow-hidden">
                       <Image
                         src={relatedArticle.image}
                         alt={relatedArticle.title}
-                        fill
-                        className="object-cover"
+                        width={300}
+                        height={128}
+                        className="w-full h-32 object-cover"
                       />
                     </div>
                     <h3 className="font-bold text-gray-900 dark:text-white mb-2 line-clamp-2">
