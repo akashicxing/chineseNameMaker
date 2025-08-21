@@ -3,7 +3,6 @@ const nextConfig = {
   output: 'standalone',
   experimental: {
     optimizePackageImports: ['@/components'],
-    optimizeCss: true,
   },
   eslint: {
     ignoreDuringBuilds: true,

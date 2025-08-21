@@ -13,6 +13,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://chinesenamegenerator.online'),
   title: 'Free Chinese Name Generator | AI Smart Chinese Names Online 2025',
   description: 'Free AI-powered Chinese name generator with 100% authentic meanings. Create beautiful Chinese names instantly with pronunciation guide, cultural significance. No registration required - Start now!',
   keywords: 'chinese name generator, free chinese names, AI chinese name generator, chinese name meaning, chinese baby names, free name generator online, authentic chinese names, chinese name pronunciation',
@@ -54,7 +55,6 @@ export const metadata: Metadata = {
   verification: {
     google: 'qCqpCFhJjwSUL7Q9XFLvM8jYzKs6D3hZ', // Google Search Console验证码
     yandex: 'yandex-verification-code',
-    bing: 'msvalidate.01-verification-code',
   },
   alternates: {
     canonical: 'https://chinesenamegenerator.online',
@@ -77,6 +77,9 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        {/* 搜索引擎验证标签 */}
+        <meta name="msvalidate.01" content="msvalidate.01-verification-code" />
+        
         {/* Google Analytics GA4 最新代码 */}
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-QLHLH6K772"></script>
         <script dangerouslySetInnerHTML={{ __html: `
