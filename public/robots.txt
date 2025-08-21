@@ -1,17 +1,54 @@
-# *
+# 中文名字生成器网站 - Chinese Name Generator Online
+# 欢迎所有搜索引擎爬虫 - Welcome all search engine crawlers
+
+# 通用规则 - General rules for all bots
 User-agent: *
 Allow: /
 Disallow: /api/
 Disallow: /_next/
 Disallow: /admin/
+Disallow: /tmp/
+Disallow: /private/
+Crawl-delay: 1
 
-# Googlebot
+# Google搜索引擎 - Google search engine
 User-agent: Googlebot
 Allow: /
 Disallow: /api/
+Crawl-delay: 1
 
-# Host
+# 百度搜索引擎 - Baidu search engine
+User-agent: Baiduspider
+Allow: /
+Disallow: /api/
+Crawl-delay: 2
+
+# 必应搜索引擎 - Bing search engine  
+User-agent: bingbot
+Allow: /
+Disallow: /api/
+Crawl-delay: 1
+
+# Yandex搜索引擎 - Yandex search engine
+User-agent: YandexBot
+Allow: /
+Disallow: /api/
+Crawl-delay: 2
+
+# 360搜索引擎 - 360 search engine
+User-agent: 360Spider
+Allow: /
+Disallow: /api/
+Crawl-delay: 2
+
+# 搜狗搜索引擎 - Sogou search engine
+User-agent: Sogou web spider
+Allow: /
+Disallow: /api/
+Crawl-delay: 2
+
+# 主机声明 - Host declaration
 Host: https://chinesenamegenerator.online
 
-# Sitemaps
+# 站点地图 - Sitemaps
 Sitemap: https://chinesenamegenerator.online/sitemap.xml

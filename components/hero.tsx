@@ -161,7 +161,7 @@ export default function Hero({ t: tProp }: { t?: any }) {
               <span className="text-red-600 dark:text-red-400">Chinese Name Generator</span>
             </div>
             <div className="text-3xl md:text-4xl lg:text-5xl text-gray-700 dark:text-gray-300 font-medium">
-              Create Authentic Chinese Names Online
+              Create Authentic Chinese Names Online with AI 2025
             </div>
           </h1>
           
@@ -169,7 +169,7 @@ export default function Hero({ t: tProp }: { t?: any }) {
             "text-xl text-gray-600 dark:text-gray-300 mb-6 max-w-2xl mx-auto transition-all duration-1000 delay-200",
             isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           )}>
-            Free AI-powered Chinese name generator online. Create authentic Chinese names instantly with meanings, pronunciation guide. Smart algorithm, no registration required.
+            Generate beautiful Chinese names instantly with our advanced AI technology. Discover authentic meanings, perfect pronunciation, and cultural significance. 100% free Chinese name generator - no registration required, start creating your perfect Chinese name now!
           </p>
 
           {/* SEO优化的特性列表 */}

@@ -9,22 +9,51 @@ const languages = fs.readdirSync(localesDir).filter(f => fs.statSync(path.join(l
 const appLangDir = path.join(__dirname, 'app', '[lang]');
 const staticPages = fs.readdirSync(appLangDir).filter(f => fs.statSync(path.join(appLangDir, f)).isDirectory());
 
-// 博客文章slug列表
+// 博客文章slug列表 - SEO优化版本
 const blogArticles = [
-  'chinese-names-for-boys',
-  'chinese-names-for-girls', 
-  'pronunciation',
-  'gamertaggenerator'
+  {
+    slug: 'chinese-names-for-boys',
+    priority: 0.8,
+    changefreq: 'monthly'
+  },
+  {
+    slug: 'chinese-names-for-girls',
+    priority: 0.8, 
+    changefreq: 'monthly'
+  },
+  {
+    slug: 'pronunciation',
+    priority: 0.7,
+    changefreq: 'monthly'
+  },
+  {
+    slug: 'gamertaggenerator',
+    priority: 0.6,
+    changefreq: 'monthly'
+  },
+  {
+    slug: 'chinese-name-culture',
+    priority: 0.75,
+    changefreq: 'monthly'
+  },
+  {
+    slug: 'traditional-chinese-names',
+    priority: 0.75,
+    changefreq: 'monthly'
+  }
 ];
 
-// 页面优先级配置
+// 页面优先级配置 - SEO优化版本
 const pagePriorities = {
-  '': 1.0,                           // 首页
-  'chinesenamegenerator': 0.9,       // 主功能页面
+  '': 1.0,                           // 首页 - 最高优先级
+  'chinesenamegenerator': 0.95,      // 主功能页面 - 核心功能
+  'ai-name-generator': 0.9,          // AI功能页面 - 高价值内容
+  'chinese-name-meanings': 0.85,     // 名字含义页面 - 高质量内容
+  'free-chinese-names': 0.8,         // 免费名字页面 - 吸引用户
   'features': 0.8,                   // 功能介绍
   'how-it-works': 0.8,              // 工作原理
-  'blog': 0.7,                      // 博客列表
-  'testimonials': 0.6,              // 用户评价
+  'blog': 0.75,                     // 博客列表 - 内容营销
+  'testimonials': 0.65,             // 用户评价
   'faq': 0.6,                       // FAQ
   'pricing': 0.5                    // 定价页面
 };
@@ -67,12 +96,12 @@ for (const lang of languages) {
     }
   }
   
-  // 博客文章页面
-  for (const articleSlug of blogArticles) {
+  // 博客文章页面 - SEO优化版本
+  for (const article of blogArticles) {
     allPaths.push({
-      loc: `/${lang}/blog/${articleSlug}`,
-      changefreq: 'monthly',
-      priority: 0.6 * (lang === 'en' ? 1 : 0.9),
+      loc: `/${lang}/blog/${article.slug}`,
+      changefreq: article.changefreq,
+      priority: article.priority * (lang === 'en' ? 1 : lang === 'zh' ? 0.95 : 0.9),
       lastmod: new Date().toISOString()
     });
   }
@@ -94,13 +123,19 @@ module.exports = {
   priority: 0.7,
   sitemapSize: 10000, // 增大限制确保所有URL在一个文件中
   
-  // 排除路径
+  // 排除路径 - SEO优化版本
   exclude: [
     '/api/*',
     '/404',
-    '/500',
+    '/500', 
     '/_next/*',
-    '/legal/*' // 法律页面优先级较低，可单独处理
+    '/admin/*',
+    '/tmp/*',
+    '/private/*',
+    '/*.json',
+    '/*.xml',
+    '/legal/cookie-policy', // 保留主要法律页面，排除次要页面
+    '/legal/gdpr'
   ],
   
   // robots.txt配置

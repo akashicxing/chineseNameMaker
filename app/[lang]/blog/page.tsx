@@ -76,9 +76,11 @@ export default function BlogPage({ params }: { params: { lang: string } }) {
                 <div className="relative h-48 bg-gray-100 dark:bg-gray-700">
                   <Image
                     src={post.image}
-                    alt={post.title}
+                    alt={`${post.title} - Learn about Chinese names, meanings and cultural significance`}
                     fill
                     className="object-cover"
+                    priority={post.id === 'chinese-names-for-boys'}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                   <div className="absolute top-4 left-4">
                     <span className="inline-block px-3 py-1 bg-red-600 text-white text-xs font-medium rounded-full">
