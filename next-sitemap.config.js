@@ -52,6 +52,7 @@ const blogArticles = [
 const pagePriorities = {
   '': 1.0,                           // 首页 - 最高优先级
   'chinesenamegenerator': 0.95,      // 主功能页面 - 核心功能
+  'generator-nama-china': 0.92,      // 印尼专用页面 - 高优先级
   'ai-name-generator': 0.9,          // AI功能页面 - 高价值内容
   'chinese-name-meanings': 0.85,     // 名字含义页面 - 高质量内容
   'free-chinese-names': 0.8,         // 免费名字页面 - 吸引用户
@@ -67,6 +68,7 @@ const pagePriorities = {
 const pageChangefreq = {
   '': 'weekly',                      // 首页
   'chinesenamegenerator': 'weekly',  // 主功能页面
+  'generator-nama-china': 'weekly',  // 印尼专用页面 - 高频更新
   'blog': 'weekly',                  // 博客列表
   'features': 'monthly',             // 功能介绍
   'how-it-works': 'monthly',         // 工作原理

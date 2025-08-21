@@ -72,6 +72,9 @@ export default function Header() {
           <Link href={`/${language}/free-chinese-names`} className="text-gray-700 hover:text-red-600 dark:text-gray-300 dark:hover:text-red-400 transition-colors">
             Free Chinese Names
           </Link>
+          <Link href={`/${language}/generator-nama-china`} className="text-gray-700 hover:text-red-600 dark:text-gray-300 dark:hover:text-red-400 transition-colors">
+            Generator Nama China
+          </Link>
           <Link href={`/${language}/ai-name-generator`} className="text-gray-700 hover:text-red-600 dark:text-gray-300 dark:hover:text-red-400 transition-colors">
             AI Name Generator
           </Link>
@@ -118,6 +121,13 @@ export default function Header() {
               onClick={() => setMobileMenuOpen(false)}
             >
               Free Chinese Names
+            </Link>
+            <Link 
+              href={`/${language}/generator-nama-china`} 
+              className="text-gray-700 hover:text-red-600 dark:text-gray-300 dark:hover:text-red-400"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Generator Nama China
             </Link>
             <Link 
               href={`/${language}/ai-name-generator`} 
